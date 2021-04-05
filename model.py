@@ -56,6 +56,24 @@ class Gratitude(db.Model):
         return f'<Gratitude gratitude_entry={self.gratitude_entry} gratitude_reason={self.gratitude_reason}>'
 
 
+class Evening_Entry(db.Model):
+    """An evening entry."""
+
+    __tablename__ = 'evening_entries'
+
+    pm_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForignKey('users.user_id'))
+    date = db.Column(db.DateTime, nullable=False)
+    activity_level = (db.Integer)
+    activity = (db.String)
+    goal_completed = (db.Boolean, nullable=False)
+    # would it be better to call this pm_entry?
+    journal_entry = db.Column(db.Text)
+
+    def __repr__(self):
+        return f'<Evening_Entry date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
+
+
 if __name__ == '__main__':
     from server import app
 
