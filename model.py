@@ -40,6 +40,22 @@ class Morning_Entry(db.Model):
         return f'<Morning_Entry user_id={self.user_id} date={self.date} hrs_sleep={self.hrs_sleep} qual_sleep={self.qual_sleep} goal={self.goal} journal_entry={self.journal_entry}>'
 
 
+class Gratitude(db.Model):
+    """A gratitude entry."""
+
+    __tablename__ = 'gratitude'
+
+    gratitude_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    am_entry_id = db.Column(db.Integer, db.ForignKey(
+        'morning_entries.am_entry_id'))
+    gratitude_entry = db.Column(db.String, nullable=False)
+    # should i make reason nullable? would it be text or string if i want to be a short reason one sentance
+    gratitude_reason = db.Column(db.Text)
+
+    def __repr__(self):
+        return f'<Gratitude gratitude_entry={self.gratitude_entry} gratitude_reason={self.gratitude_reason}>'
+
+
 if __name__ == '__main__':
     from server import app
 
