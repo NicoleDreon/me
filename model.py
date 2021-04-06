@@ -74,18 +74,33 @@ class Evening_Entry(db.Model):
         return f'<Evening_Entry date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
 
 
-class Emotion(db.Model):
+class Emotion_Entry(db.Model):
     """An emotion entry."""
 
     __tablename__ = 'emotions'
 
-    emotions_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    emotion_entry_id = db.Column(
+        db.Integer, autoincrement=True, primary_key=True)
     pm_entry_id = db.Column(db.Integer, db.ForignKey(
         'evening_entries.pm_entry_id'))
-    emotion = db.Column(db.String)
+    emotion = db.Column(db.Integer, db.ForignKey('emotions.emotion'))
 
     def __repr__(self):
         return f'<Emotion emotion{self.emotion}>'
+
+
+class Emotion(db.Model):
+    """An emotion."""
+
+    __tablename__ = 'emotions'
+
+    emotion_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    emotion = db.Column(db.String)
+    user_id = db.Column(db.Integer, db.ForignKey(
+        'users.user_id'), nullable=False)
+
+    def __repr__(self):
+        return f'<Emotion emotion={self.emotion} user_id={self.user_id}>'
 
 
 if __name__ == '__main__':
