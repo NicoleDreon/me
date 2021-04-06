@@ -15,12 +15,14 @@ class User(db.Model):
     fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String)
     email = db.Column(db.String, nullable=False)
+    # should phone be string?
+    phone = db.Column(db.String)
     password = db.Column(db.String, nullable=False)
     dob = db.Column(db.DateTime)
     gender = db.Column(db.String)
 
     def __repr__(self):
-        return f'< User user_id = {self.user_id} fname = {self.fname} lname = {self.lname} email = {self.email}, password = {self.password} dob = {self.dob} gender = {self.gender} >'
+        return f'< User user_id = {self.user_id} fname = {self.fname} lname = {self.lname} email = {self.email}, phone={self.phone} password = {self.password} dob = {self.dob} gender = {self.gender} >'
 
 
 class Morning_Entry(db.Model):
@@ -28,12 +30,13 @@ class Morning_Entry(db.Model):
 
     __tablename__ = 'morning_entries'
 
-    am_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForignKey('users.user_id'))
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     date = db.Column(db.DateTime, nullable=False)
-    hrs_sleep = dbColumn(db.Numeric)
+    hrs_sleep = db.Column(db.Numeric)
     qual_sleep = db.Column(db.Integer)
     goal = db.Column(db.String)
+    gratitude = db.Column(db.Integer, db.ForeignKey('gratitude.id'))
     journal_entry = db.Column(db.Text)
 
     def __repr__(self):
@@ -45,15 +48,14 @@ class Gratitude(db.Model):
 
     __tablename__ = 'gratitude'
 
-    gratitude_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    am_entry_id = db.Column(db.Integer, db.ForignKey(
-        'morning_entries.am_entry_id'))
-    gratitude_entry = db.Column(db.String, nullable=False)
-    # should i make reason nullable? would it be text or string if i want to be a short reason one sentance
-    gratitude_reason = db.Column(db.Text)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    am_entry_id = db.Column(db.Integer, db.ForeignKey(
+        'morning_entries.id'))
+    entry = db.Column(db.String, nullable=False)
+    reason = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f'<Gratitude gratitude_entry={self.gratitude_entry} gratitude_reason={self.gratitude_reason}>'
+        return f'<Gratitude entry={self.gratitude_entry} reason={self.gratitude_reason}>'
 
 
 class Evening_Entry(db.Model):
@@ -61,12 +63,14 @@ class Evening_Entry(db.Model):
 
     __tablename__ = 'evening_entries'
 
-    pm_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForignKey('users.user_id'))
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     date = db.Column(db.DateTime, nullable=False)
     activity_level = (db.Integer)
-    activity = (db.String)
-    goal_completed = (db.Boolean, nullable=False)
+    activity = db.Column(db.String)
+    goal_completed = db.Column(db.Boolean)
+    emotion = db.Column(db.Integer, db.ForeignKey(
+        'emotion_entry.id'))
     # would it be better to call this pm_entry?
     journal_entry = db.Column(db.Text)
 
@@ -77,13 +81,13 @@ class Evening_Entry(db.Model):
 class Emotion_Entry(db.Model):
     """An emotion entry."""
 
-    __tablename__ = 'emotions'
+    __tablename__ = 'emotion_entries'
 
-    emotion_entry_id = db.Column(
+    id = db.Column(
         db.Integer, autoincrement=True, primary_key=True)
-    pm_entry_id = db.Column(db.Integer, db.ForignKey(
-        'evening_entries.pm_entry_id'))
-    emotion = db.Column(db.Integer, db.ForignKey('emotions.emotion'))
+    pm_entry_id = db.Column(db.Integer, db.ForeignKey(
+        'evening_entries.id'))
+    emotion = db.Column(db.Integer, db.ForeignKey('emotions.emotion'))
 
     def __repr__(self):
         return f'<Emotion emotion{self.emotion}>'
@@ -94,16 +98,26 @@ class Emotion(db.Model):
 
     __tablename__ = 'emotions'
 
-    emotion_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     emotion = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForignKey(
+    user_id = db.Column(db.Integer, db.ForeignKey(
         'users.user_id'), nullable=False)
 
     def __repr__(self):
         return f'<Emotion emotion={self.emotion} user_id={self.user_id}>'
 
 
+def connect_to_db(flask_app, db_uri='postgresql:///entries', echo=True):
+    flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
+    flask_app.config['SQLALCHEMY_ECHO'] = echo
+    flask_app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+
+    db.app = flask_app
+    db.init_app(flask_app)
+
+    print('Connected to the db!')
+
+
 if __name__ == '__main__':
     from server import app
-
     connect_to_db(app)
