@@ -1,7 +1,10 @@
-{% block body %}
-<form action="">
+{% block head %}
+<script src="/static/homepage.js"></script>
+{%endblock%} {% block body %}
+<form action="" id="login-form">
   <input type="text" id="user-name" placeholder="username" />
-  <input type="text" id="password" placeholder="password" />
+  <input type="password" id="password" placeholder="password" />
   <button>Submit</button>
 </form>
+<div id="div"></div>
 {% endblock %}
