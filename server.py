@@ -1,11 +1,17 @@
 """Server for me app."""
 
-from flask import Flask
+from flask import (Flask, render_template)
+
+from model import connect_to_db
 
 app = Flask(__name__)
 
 
-# Replace this with routes and view functions!
+@app.route('/')
+def homepage():
+    """View homepage."""
+
+    return render_template('homepage.html')
 
 
 if __name__ == '__main__':

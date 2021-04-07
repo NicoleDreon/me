@@ -68,7 +68,6 @@ class Evening_Entry(db.Model):
     activity_level = (db.Integer)
     activity = db.Column(db.String)
     goal_completed = db.Column(db.Boolean)
-    # would it be better to call this pm_entry?
     journal_entry = db.Column(db.Text)
 
     def __repr__(self):
@@ -95,8 +94,7 @@ class Emotion(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     emotion = db.Column(db.String)
-    user_id = db.Column(db.Integer, db.ForeignKey(
-        'users.user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
 
     def __repr__(self):
         return f'<Emotion emotion={self.emotion} user_id={self.user_id}>'
