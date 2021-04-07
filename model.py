@@ -6,6 +6,24 @@ from datetime import datetime
 db = SQLAlchemy()
 
 
+# def test_data():
+#     """Create sample data."""
+
+#     User.query.delete()
+
+#     user1 = User(fname='Noelle', lname='Smith',
+#                  email='noelle@gmail.com', password='letsdothis', dob='09-12-1982', gender='Female')
+#     user2 = User(fname='Nicole', lname='Dreon',
+#                  email='nicole@yahoo.com', password='sunshine', dob='08-28-1985', gender='Female')
+#     user3 = User(fname='Brian', lname='Roberts',
+#                  email='broberts@gmail.com', password='music', dob='12-17-1990', gender='Male')
+#     user4 = User(fname='Skylar', lname='Jones', email='skylerjones@mail.com',
+#                  password='password', dob='04-18-2001', gender='non-bianary')
+
+#     db.session.add_all([user1, user2, user3, user4])
+#     db.session.commit()
+
+
 class User(db.Model):
     """A user."""
 
@@ -15,7 +33,6 @@ class User(db.Model):
     fname = db.Column(db.String, nullable=False)
     lname = db.Column(db.String)
     email = db.Column(db.String, nullable=False)
-    # should phone be string?
     phone = db.Column(db.String)
     password = db.Column(db.String, nullable=False)
     dob = db.Column(db.DateTime)
@@ -24,13 +41,18 @@ class User(db.Model):
     def __repr__(self):
         return f'< User user_id = {self.user_id} fname = {self.fname} lname = {self.lname} email = {self.email}, phone={self.phone} password = {self.password} dob = {self.dob} gender = {self.gender} >'
 
+    morning_entry = db.relationship('Morning_Entry', backref='users')
+    evening_entry = db.relationship('Evening_Entry', backref='users')
+    emotion = db.relationship('Emotion', backref='users')
+    
+
 
 class Morning_Entry(db.Model):
     """A morning entry."""
 
     __tablename__ = 'morning_entries'
 
-    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    am_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     date = db.Column(db.DateTime, nullable=False)
     hrs_sleep = db.Column(db.Numeric)
@@ -41,6 +63,7 @@ class Morning_Entry(db.Model):
     def __repr__(self):
         return f'<Morning_Entry user_id={self.user_id} date={self.date} hrs_sleep={self.hrs_sleep} qual_sleep={self.qual_sleep} goal={self.goal} journal_entry={self.journal_entry}>'
 
+    gratitude = db.relationship('Gratitude', backref='morning_entries')
 
 class Gratitude(db.Model):
     """A gratitude entry."""
@@ -49,7 +72,7 @@ class Gratitude(db.Model):
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     am_entry_id = db.Column(db.Integer, db.ForeignKey(
-        'morning_entries.id'))
+        'morning_entries.am_entry_id'))
     entry = db.Column(db.String, nullable=False)
     reason = db.Column(db.String, nullable=False)
 
@@ -62,7 +85,7 @@ class Evening_Entry(db.Model):
 
     __tablename__ = 'evening_entries'
 
-    id = db.Column(db.Integer, autoincrement=True, primary_key=True)
+    pm_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     date = db.Column(db.DateTime, nullable=False)
     activity_level = (db.Integer)
@@ -73,6 +96,7 @@ class Evening_Entry(db.Model):
     def __repr__(self):
         return f'<Evening_Entry date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
 
+    emotion_entry = db.relationship('Emotion_Entry', backref='evening_entries')
 
 class Emotion_Entry(db.Model):
     """An emotion entry."""
@@ -80,11 +104,13 @@ class Emotion_Entry(db.Model):
     __tablename__ = 'emotion_entries'
 
     id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    pm_entry_id = db.Column(db.Integer, db.ForeignKey('evening_entries.id'))
-    emotion = db.Column(db.Integer, db.ForeignKey('emotions.id'))
+    pm_entry_id = db.Column(db.Integer, db.ForeignKey('evening_entries.pm_entry_id'))
+    emotion_id = db.Column(db.Integer, db.ForeignKey('emotions.id'))
 
     def __repr__(self):
         return f'<Emotion emotion{self.emotion}>'
+
+    emotion = db.relationship('Emotion', backref='emotion_entries')
 
 
 class Emotion(db.Model):
