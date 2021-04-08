@@ -41,9 +41,9 @@ class User(db.Model):
     def __repr__(self):
         return f'< User user_id = {self.user_id} fname = {self.fname} lname = {self.lname} email = {self.email}, phone={self.phone} password = {self.password} dob = {self.dob} gender = {self.gender} >'
 
-    morning_entry = db.relationship('Morning_Entry', backref='users')
-    evening_entry = db.relationship('Evening_Entry', backref='users')
-    emotion = db.relationship('Emotion', backref='users')
+    morning_entries = db.relationship('Morning_Entry', backref='user')
+    evening_entries = db.relationship('Evening_Entry', backref='user')
+    emotions = db.relationship('Emotion', backref='user')
     
 
 
@@ -53,7 +53,7 @@ class Morning_Entry(db.Model):
     __tablename__ = 'morning_entries'
 
     am_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'), nullable=False)
     date = db.Column(db.DateTime, nullable=False)
     hrs_sleep = db.Column(db.Numeric)
     qual_sleep = db.Column(db.Integer)
@@ -94,7 +94,7 @@ class Evening_Entry(db.Model):
     journal_entry = db.Column(db.Text)
 
     def __repr__(self):
-        return f'<Evening_Entry date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
+        return f'<Evening_Entry pm_entry_id={self.pm_entry_id} date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
 
     emotion_entry = db.relationship('Emotion_Entry', backref='evening_entries')
 
