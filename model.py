@@ -101,6 +101,7 @@ class Evening_Entry(db.Model):
     activity_level = (db.Integer)
     activity = db.Column(db.String)
     goal_completed = db.Column(db.Boolean)
+    qual_day = db.Column(db.Integer, nullable=False)
     journal_entry = db.Column(db.Text)
 
     def __repr__(self):
