@@ -13,11 +13,13 @@ app.secret_key = 'key'
 @app.route('/')
 def homepage():
     """View homepage."""
+    if 'user_id' in session:
+        return render_template('profile.html')
+    else:
+        return render_template('homepage.html')
 
-    return render_template('homepage.html')
 
-
-@app.route('/login', methods=['POST'])
+@app.route('/login', methods=['POST', 'GET'])
 def login():
     """Log in."""
 
@@ -33,15 +35,22 @@ def login():
         print(user)
         print(user.fname)
         print(user.user_id)
+        # redirect to /profile once profile route is created
+        return render_template('profile.html')
+  
     else:
         flash('Invalid login information, try again.')
-        return redirect(url_for('homepage'))
-    return render_template('profile.html')
+        return redirect('/')
+
+# if user not in session send to /
+# if user in session
+# display info by query db
+
 
 @app.route('/logout')
 def logout():
-    session.pop('user', None)
-    return redirect(url_for('homepage'))
+    session.pop('user_id', None)
+    return redirect('/')
 
 
 if __name__ == '__main__':
