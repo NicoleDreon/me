@@ -42,6 +42,15 @@ class User(db.Model):
     def __repr__(self):
         return f'< User user_id = {self.user_id} fname = {self.fname} lname = {self.lname} email = {self.email}, phone={self.phone} password = {self.password} dob = {self.dob} gender = {self.gender} >'
 
+    def to_dict(self):
+        return {
+            'user_id': self.user_id,
+            'fname': self.fname,
+            'lname': self.lname,
+            'email': self.email,
+        }
+
+
     morning_entries = db.relationship('Morning_Entry', backref='user')
     evening_entries = db.relationship('Evening_Entry', backref='user')
     emotions = db.relationship('Emotion', backref='user')
