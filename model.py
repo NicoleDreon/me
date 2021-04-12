@@ -3,6 +3,7 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 
+
 db = SQLAlchemy()
 
 
@@ -63,7 +64,7 @@ class Morning_Entry(db.Model):
     def __repr__(self):
         return f'<Morning_Entry user_id={self.user_id} date={self.date} hrs_sleep={self.hrs_sleep} qual_sleep={self.qual_sleep} goal={self.goal} journal_entry={self.journal_entry}>'
 
-    gratitude = db.relationship('Gratitude', backref='morning_entries')
+    gratitudes = db.relationship('Gratitude', backref='morning_entry')
 
 class Gratitude(db.Model):
     """A gratitude entry."""
@@ -96,7 +97,7 @@ class Evening_Entry(db.Model):
     def __repr__(self):
         return f'<Evening_Entry pm_entry_id={self.pm_entry_id} date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
 
-    emotion_entry = db.relationship('Emotion_Entry', backref='evening_entries')
+    emotion_entries = db.relationship('Emotion_Entry', backref='evening_entry')
 
 class Emotion_Entry(db.Model):
     """An emotion entry."""
