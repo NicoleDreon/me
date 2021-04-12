@@ -25,9 +25,6 @@ def login():
     password = request.form.get('password')
     user = crud.check_login(email)
 
-    # print(user)
-    # print(user.user_id)
-
     if user and user.email == email and user.password == password:
         session['user_id'] = user.user_id
         session['fname'] = user.fname
@@ -41,7 +38,10 @@ def login():
         return redirect(url_for('homepage'))
     return render_template('profile.html')
 
-
+@app.route('/logout')
+def logout():
+    session.pop('user', None)
+    return redirect(url_for('homepage'))
 
 
 if __name__ == '__main__':
