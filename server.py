@@ -13,6 +13,7 @@ app.secret_key = 'key'
 @app.route('/')
 def homepage():
     """View homepage."""
+
     if 'user_id' in session:
         return render_template('profile.html')
     else:
@@ -29,14 +30,7 @@ def login():
 
     if user and user.email == email and user.password == password:
         session['user_id'] = user.user_id
-        session['fname'] = user.fname
-        # user_id = session.get('user_id') - will return none if nothing
-        # session['user'] = user.to_dict()
-        print(user)
-        print(user.fname)
-        print(user.user_id)
-        # redirect to /profile once profile route is created
-        return render_template('profile.html')
+        return redirect('/profile')
   
     else:
         flash('Invalid login information, try again.')
@@ -45,10 +39,33 @@ def login():
 # if user not in session send to /
 # if user in session
 # display info by query db
+@app.route('/profile')
+def profile():
+    """Display user profile information."""
+
+    user_id = session.get('user_id')
+    user = crud.get_user(user_id)
+    # dry code => user = crud.get_user(session.get('user_id'))
+  
+    if 'user_id' in session:
+        return render_template('profile.html', 
+                                fname=user.fname,
+                                lname=user.lname, 
+                                email=user.email,
+                                phone=user.phone,
+                                password=user.password,
+                                dob=user.dob,
+                                gender=user.gender)
+        
+    else:    
+        return render_template('homepage.html')
+    
 
 
 @app.route('/logout')
 def logout():
+    """Log out."""
+
     session.pop('user_id', None)
     return redirect('/')
 
