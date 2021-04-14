@@ -68,7 +68,7 @@ class Morning_Entry(db.Model):
     def __repr__(self):
         return f'<Morning_Entry user_id={self.user_id} date={self.date} hrs_sleep={self.hrs_sleep} qual_sleep={self.qual_sleep} goal={self.goal} journal_entry={self.journal_entry}>'
 
-    user = db.relationship('User', backref='morning_entries')
+    user = db.relationship('User', backref='morning_entry')
 
 class Gratitude(db.Model):
     """A gratitude entry."""
