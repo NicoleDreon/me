@@ -1,0 +1,13 @@
+{% block head %} {% endblock %} {% block body %} {% for item in morning_entries
+%}
+<p>{{item.date}}</p>
+<p>Hours Slept: {{item.hrs_sleep}}</p>
+<p>Sleep Quality: {{item.qual_sleep}}</p>
+<p>Intention/Goal: {{item.goal}}</p>
+<p></p>
+<p></p>
+
+{% endfor %}
+<p>{{morning_entries}}</p>
+<p>{{evening_entries}}</p>
+{% endblock %}
