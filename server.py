@@ -36,6 +36,18 @@ def login():
         flash('Invalid login information, try again.')
         return redirect('/')
 
+@app.route('/sign_up', methods=['POST', 'GET'])
+def sign_up():
+    """Create new user."""
+
+    user = crud.get_user(session.get('user_id'))
+
+    if 'user_id' in session:
+        return redirect('/past_entries')
+
+    else:
+        return render_template('sign_up.html')
+
 # if user not in session send to /
 # if user in session
 # display info by query db
