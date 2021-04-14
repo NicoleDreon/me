@@ -7,6 +7,11 @@ def check_login(email):
     
   return User.query.filter_by(email=email).first()
 
+def get_user(user_id):
+  """Return user by id."""
+
+  return User.query.filter_by(user_id=user_id).first()
+
 
 if __name__ == '__main__':
     from server import app
