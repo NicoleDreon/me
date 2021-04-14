@@ -49,12 +49,7 @@ class User(db.Model):
             'lname': self.lname,
             'email': self.email,
         }
-
-
-    morning_entries = db.relationship('Morning_Entry', backref='user')
-    evening_entries = db.relationship('Evening_Entry', backref='user')
-    emotions = db.relationship('Emotion', backref='user')
-    
+       
 
 
 class Morning_Entry(db.Model):
@@ -73,7 +68,7 @@ class Morning_Entry(db.Model):
     def __repr__(self):
         return f'<Morning_Entry user_id={self.user_id} date={self.date} hrs_sleep={self.hrs_sleep} qual_sleep={self.qual_sleep} goal={self.goal} journal_entry={self.journal_entry}>'
 
-    gratitudes = db.relationship('Gratitude', backref='morning_entry')
+    user = db.relationship('User', backref='morning_entries')
 
 class Gratitude(db.Model):
     """A gratitude entry."""
@@ -89,6 +84,7 @@ class Gratitude(db.Model):
     def __repr__(self):
         return f'<Gratitude entry={self.gratitude_entry} reason={self.gratitude_reason}>'
 
+    morning_entries = db.relationship('Morning_Entry', backref='gratitudes')
 
 class Evening_Entry(db.Model):
     """An evening entry."""
@@ -107,7 +103,7 @@ class Evening_Entry(db.Model):
     def __repr__(self):
         return f'<Evening_Entry pm_entry_id={self.pm_entry_id} date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
 
-    emotion_entries = db.relationship('Emotion_Entry', backref='evening_entry')
+    user = db.relationship('User', backref='evening_entries')
 
 class Emotion_Entry(db.Model):
     """An emotion entry."""
@@ -121,8 +117,9 @@ class Emotion_Entry(db.Model):
     def __repr__(self):
         return f'<Emotion emotion{self.emotion}>'
 
+    evening_entry = db.relationship('Evening_Entry', backref='emotion_entries')
     emotion = db.relationship('Emotion', backref='emotion_entries')
-
+   
 
 class Emotion(db.Model):
     """An emotion."""
@@ -136,6 +133,7 @@ class Emotion(db.Model):
     def __repr__(self):
         return f'<Emotion emotion={self.emotion} user_id={self.user_id}>'
 
+    user = db.relationship('User', backref='emotions')
 
 def connect_to_db(flask_app, db_uri='postgresql:///entries', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
