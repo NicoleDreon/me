@@ -23,11 +23,11 @@ user4 = User(fname='Skylar', lname='Jones', email='skylerjones@mail.com',
                   password='password', dob='04-18-2001', gender='non-bianary')
 
   # create test am_entries
-user1_am_entry1 = Morning_Entry(user_id=1, date='04-06-2021', hrs_sleep=7, qual_sleep=9, goal='Meet with mentor', journal_entry='Ready for today!')
+user1_am_entry1 = Morning_Entry(user_id=1, date='04-06-2021', hrs_sleep=7, qual_sleep=9, snooze= 2, goal='Meet with mentor', journal_entry='Ready for today!')
 
-user1_am_entry2 = Morning_Entry(user_id=1, date='04-07-2021', hrs_sleep=8.5, qual_sleep=8, goal='Seed my db', journal_entry='It is a beautiful day!')
+user1_am_entry2 = Morning_Entry(user_id=1, date='04-07-2021', hrs_sleep=8.5, qual_sleep=8,snooze=3, goal='Seed my db', journal_entry='It is a beautiful day!')
 
-user2_am_entry1 = Morning_Entry(user_id=2, date='04-07-2021', hrs_sleep=8, qual_sleep=8, goal='Go for a walk', journal_entry='I can do this!')
+user2_am_entry1 = Morning_Entry(user_id=2, date='04-07-2021', hrs_sleep=8, qual_sleep=8, snooze=0, goal='Go for a walk', journal_entry='I can do this!')
 
   # create gratitude entries
 user1_gratitude1 = Gratitude(am_entry_id=1, entry='The sun', reason='It warms my soul')
