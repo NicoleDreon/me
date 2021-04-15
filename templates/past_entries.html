@@ -1,13 +1,31 @@
-{% block head %} {% endblock %} {% block body %} {% for item in morning_entries
-%}
-<p>{{item.date}}</p>
-<p>Hours Slept: {{item.hrs_sleep}}</p>
-<p>Sleep Quality: {{item.qual_sleep}}</p>
-<p>Intention/Goal: {{item.goal}}</p>
-<p></p>
-<p></p>
+{% block head %} {% endblock %} {% block body %} {% for morning_entry,
+evening_entry in entries %}
+<h3>{{morning_entry.date}}</h3>
+<h4>Morning Entry</h4>
+<ul>
+  Gratitude:
+</ul>
 
+{% for gratitude in morning_entry.gratitudes %}
+<li>{{gratitude.entry}}: {{gratitude.reason}}</li>
 {% endfor %}
-<p>{{morning_entries}}</p>
-<p>{{evening_entries}}</p>
-{% endblock %}
+
+<p>Hours slept: {{morning_entry.hrs_sleep}}</p>
+<p>Quality of sleep: {{morning_entry.qual_sleep}}</p>
+<p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
+<p>Intention/Goal: {{morning_entry.goal}}</p>
+<p>Jornal Entry: {{morning_entry.journal_entry}}</p>
+<h4>Evening Entry</h4>
+<p>Activity Level: {{evening_entry.activity_level}}</p>
+<p>Activity: {{evening_entry.activity}}</p>
+<p>Goal Completed: {{evening_entry.goal_completed}}</p>
+<p>Overall Rating for Day: {{evening_entry.qual_day}}</p>
+<ul>
+  Emotions:
+</ul>
+{% for emotion_entry in evening_entry.emotion_entries %}
+<li>{{emotion_entry.emotion.emotion}}</li>
+{% endfor %}
+<p>Journal Entry: {{evening_entry.journal_entry}}</p>
+
+{% endfor %} {% endblock %}

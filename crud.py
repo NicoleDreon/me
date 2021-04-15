@@ -22,6 +22,17 @@ def add_user(fname, lname, email, phone, dob, gender, password):
 
   return new_user
 
+def get_entries(user_id):
+  """Create relationship between morning_entries and evening_entries tables for a speific user_id."""
+
+  q = db.session.query(Morning_Entry, Evening_Entry)
+  q = q.filter(Evening_Entry.user_id == Morning_Entry.user_id)
+  q = q.outerjoin(Evening_Entry, Morning_Entry.date == Evening_Entry.date, full=True)
+  q = q.filter_by(user_id=user_id)
+  entries = q.all()
+
+  return entries
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)

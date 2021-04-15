@@ -99,12 +99,21 @@ def past_entries():
     """Display past journal entries for user."""
 
     user = crud.get_user(session.get('user_id'))
+    print(user)
+    user_id = user.user_id
+    print(user_id)
     
     if 'user_id' in session:
+        
+        entries = crud.get_entries(user_id)
+        print(entries)
+        
+        return render_template('past_entries.html', entries=entries)
+
         # dict = {date: morning, evening}
-        return render_template('past_entries.html',
-                                morning_entries=user.morning_entries,
-                                evening_entries=user.evening_entries)
+        # return render_template('past_entries.html',
+                                # morning_entries=user.morning_entries,
+                                # evening_entries=user.evening_entries)
 
     else:
         return render_template('homepage.html')
