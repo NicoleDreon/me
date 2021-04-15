@@ -1,0 +1,7 @@
+#sign-up-form {
+  display: flex;
+  flex-direction: column;
+}
+body {
+  color: aqua;
+}

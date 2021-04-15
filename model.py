@@ -94,7 +94,7 @@ class Evening_Entry(db.Model):
     pm_entry_id = db.Column(db.Integer, autoincrement=True, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('users.user_id'))
     date = db.Column(db.DateTime, nullable=False)
-    activity_level = (db.Integer)
+    activity_level = db.Column(db.Integer)
     activity = db.Column(db.String)
     goal_completed = db.Column(db.Boolean)
     qual_day = db.Column(db.Integer, nullable=False)

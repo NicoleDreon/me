@@ -15,7 +15,7 @@ def homepage():
     """View homepage."""
 
     if 'user_id' in session:
-        return render_template('profile.html')
+        return redirect('/past_entries')
     else:
         return render_template('homepage.html')
 

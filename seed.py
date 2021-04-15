@@ -44,19 +44,19 @@ user1_evening_entry2 = Evening_Entry(user_id=1, date='04-07-2021', activity_leve
 
 user2_evening_entry1 = Evening_Entry(user_id=2, date='04-07-2021', activity_level=7, activity='soccer', goal_completed=True, qual_day= 7, journal_entry='Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.')
 
-  # create emotion entries
-user1_emotion1 = Emotion_Entry(pm_entry_id=1, emotion_id=2)
-user1_emotion2 = Emotion_Entry(pm_entry_id=1, emotion_id=3)
-user1_emotion3 = Emotion_Entry(pm_entry_id=1, emotion_id=4)
-
   # create emotions
 sad = Emotion(emotion='Sad')
 happy = Emotion(emotion='Happy')
 joy = Emotion(emotion='Joy')
 tired = Emotion(emotion='tired')
 
+  # create emotion entries
+user1_emotion1 = Emotion_Entry(pm_entry_id=1, emotion_id=2)
+user1_emotion2 = Emotion_Entry(pm_entry_id=1, emotion_id=3)
+user1_emotion3 = Emotion_Entry(pm_entry_id=1, emotion_id=4)
+
   # db.session.add(am_entry1)
-db.session.add_all([user1, user2, user3, user4, user1_am_entry1, user1_am_entry2, user2_am_entry1, user1_gratitude1, user1_gratitude2, user1_gratitude3, user1_evening_entry1, user1_evening_entry2, user2_evening_entry1, sad, happy, joy, tired])
+db.session.add_all([user1, user2, user3, user4, user1_am_entry1, user1_am_entry2, user2_am_entry1, user1_gratitude1, user1_gratitude2, user1_gratitude3, user1_evening_entry1, user1_evening_entry2, user2_evening_entry1, sad, happy, joy, tired, user1_emotion1, user1_emotion2, user1_emotion3])
 db.session.commit()
 
 # if __name__ == '__main__':
