@@ -12,6 +12,15 @@ def get_user(user_id):
 
   return User.query.filter_by(user_id=user_id).first()
 
+def add_user(fname, lname, email, phone, dob, gender, password):
+  """Add new user to db."""
+
+  new_user = User(fname=fname, lname=lname, email=email, phone=phone, password=password, dob=dob, gender=gender)
+
+  db.session.add(new_user)
+  db.session.commit()
+
+  return new_user
 
 if __name__ == '__main__':
     from server import app

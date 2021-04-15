@@ -7,6 +7,7 @@ from datetime import datetime
 db = SQLAlchemy()
 
 
+
 # def test_data():
 #     """Create sample data."""
 
@@ -62,6 +63,7 @@ class Morning_Entry(db.Model):
     date = db.Column(db.DateTime, nullable=False)
     hrs_sleep = db.Column(db.Numeric)
     qual_sleep = db.Column(db.Integer)
+    snooze = db.Column(db.Integer)
     goal = db.Column(db.String)
     journal_entry = db.Column(db.Text)
 

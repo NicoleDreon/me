@@ -3,6 +3,7 @@
 from flask import (Flask, render_template, request, flash, redirect, url_for, session, jsonify)
 
 from model import connect_to_db
+from datetime import datetime
 
 import crud
 
@@ -42,6 +43,7 @@ def sign_up():
 
     user = crud.get_user(session.get('user_id'))
 
+
     if 'user_id' in session:
         return redirect('/past_entries')
 
@@ -57,6 +59,7 @@ def profile():
 
     user_id = session.get('user_id')
     user = crud.get_user(user_id)
+    fname = user.fname
     # dry code => user = crud.get_user(session.get('user_id'))
   
     if 'user_id' in session:
@@ -71,6 +74,25 @@ def profile():
         
     else:    
         return render_template('homepage.html')
+
+@app.route('/profile', methods=['POST'])
+def get_new_user_info():
+    """Get new user info."""
+
+    fname = request.form.get('fname')
+    lname = request.form.get('lname')
+    email = request.form.get('email')
+    phone = request.form.get('phone')
+    password = request.form.get('password')
+    dob = datetime.today()
+    gender = request.form.get('gender')
+    print(password)
+
+    new_user = crud.add_user(fname, lname, email, phone, dob, gender, password)
+
+    session['user_id'] = new_user.user_id
+
+    return render_template('profile.html', fname=fname, lname=lname, email=email, phone=phone, password=password, dob=dob, gender=gender)
     
 @app.route('/past_entries')
 def past_entries():
