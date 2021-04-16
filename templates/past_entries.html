@@ -1,6 +1,12 @@
-{% block head %} {% endblock %} {% block body %} {% for morning_entry,
-evening_entry in entries %}
-<a href="/new_am_entry">Create New Morning Entry</a>
+{% block head %} {% endblock %} {% block body %}
+<ul>
+  <li><a href="/new_am_entry">New Morning Entry</a></li>
+  <li><a href="/new_pm_entry">New Evening Entry</a></li>
+  <li><a href="/profile">View Profile</a></li>
+  <li><a href="/logout">Logout</a></li>
+</ul>
+{% for morning_entry, evening_entry in entries %}
+
 <h3>{{morning_entry.date}}</h3>
 <h4>Morning Entry</h4>
 <ul>
