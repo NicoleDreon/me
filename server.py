@@ -118,6 +118,12 @@ def past_entries():
     else:
         return render_template('homepage.html')
 
+@app.route('/new_am_entry')
+def new_am_entry():
+    """Create a new morning entry."""
+
+    return render_template('new_am_entry.html')
+
 
 @app.route('/logout')
 def logout():
