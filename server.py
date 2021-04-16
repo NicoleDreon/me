@@ -99,9 +99,9 @@ def past_entries():
     """Display past journal entries for user."""
 
     user = crud.get_user(session.get('user_id'))
-    print(user)
+    # print(user)
     user_id = user.user_id
-    print(user_id)
+    # print(user_id)
     
     if 'user_id' in session:
         
@@ -122,8 +122,16 @@ def past_entries():
 def new_am_entry():
     """Create a new morning entry."""
 
-    return render_template('new_am_entry.html')
-
+    user = crud.get_user(session.get('user_id'))
+    user_id = user.user_id
+    
+    if 'user_id' in session:
+        print('************')
+        return render_template('new_am_entry.html')
+   
+    # else:
+    #     print('_____________')
+    #     return redirect('/')       
 
 @app.route('/logout')
 def logout():
