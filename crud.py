@@ -33,6 +33,16 @@ def get_entries(user_id):
 
   return entries
 
+def add_am_entry(date, hrs_sleep, qual_sleep, snooze, goal, journal_entry):
+  """Add new morning journal entry."""
+
+  new_am_entry = Morning_Entry(user_id=session['user_id'], date=date, hrs_sleep=hrs_sleep, qual_sleep=qual_sleep, snooze=snooze, goal=goal, journal_entry=journal_entry)
+
+  db.session.add(new_am_entry)
+  db.session.commit()
+
+  return new_am_entry
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)
