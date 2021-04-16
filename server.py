@@ -31,7 +31,7 @@ def login():
 
     if user and user.email == email and user.password == password:
         session['user_id'] = user.user_id
-        return redirect('/profile')
+        return redirect('/past_entries')
   
     else:
         flash('Invalid login information, try again.')
@@ -56,13 +56,12 @@ def sign_up():
 @app.route('/profile')
 def profile():
     """Display user profile information."""
-
-    user_id = session.get('user_id')
-    user = crud.get_user(user_id)
-    fname = user.fname
-    # dry code => user = crud.get_user(session.get('user_id'))
   
     if 'user_id' in session:
+        user_id = session.get('user_id')
+        user = crud.get_user(user_id)
+        fname = user.fname
+        # dry code => user = crud.get_user(session.get('user_id'))
         return render_template('profile.html', 
                                 fname=user.fname,
                                 lname=user.lname, 
@@ -97,14 +96,10 @@ def get_new_user_info():
 @app.route('/past_entries')
 def past_entries():
     """Display past journal entries for user."""
-
-    user = crud.get_user(session.get('user_id'))
-    # print(user)
-    user_id = user.user_id
-    # print(user_id)
     
     if 'user_id' in session:
-        
+        user = crud.get_user(session.get('user_id'))
+        user_id = user.user_id
         entries = crud.get_entries(user_id)
         print(entries)
         
@@ -121,17 +116,49 @@ def past_entries():
 @app.route('/new_am_entry')
 def new_am_entry():
     """Create a new morning entry."""
-
-    user = crud.get_user(session.get('user_id'))
-    user_id = user.user_id
     
     if 'user_id' in session:
-        print('************')
+        user = crud.get_user(session.get('user_id'))
+        user_id = user.user_id
+    
         return render_template('new_am_entry.html')
    
-    # else:
-    #     print('_____________')
-    #     return redirect('/')       
+    else:
+        return redirect('/')   
+
+@app.route('/new_pm_entry')
+def new_pm_route():
+    """Create a new evening entry."""
+
+    if 'user_id' in session:
+        user = crud.get_user(session.get('user_id'))
+        user_id = user.user_id
+
+        return render_template('new_pm_entry.html')
+
+    else:
+        return redirect('/')
+
+# @app.route('/past_entries', methods=['POST'])
+# def add_new_am_entry():
+#     """Add new morning entry to db."""
+
+#     date = requset.form.get('date')
+#     print(date)
+#     hrs_sleep = request.form.get('hrs_sleep')
+#     qual_sleep = request.form.get('qual_sleep')
+#     snooze = request.form.get('snooze')
+#     goal = request.form.get('goal')
+#     journal_entry = request.form.get('journal_entry')
+
+#     new_am_entry = crud.add_am_entry(date, hrs_sleep, qual_sleep, goal, journal_entry)
+
+#     session['user_id'] = new_am_entry.user_id
+#     print('**********')
+#     print(new_am_entry)
+#     print('user_id')
+
+#     return render_template('past_entries.html', date=date, hrs_sleep=hrs_sleep, qual_sleep=qual_sleep, snooze=snooze, goal=goal, journal_entry=journal_entry)
 
 @app.route('/logout')
 def logout():
