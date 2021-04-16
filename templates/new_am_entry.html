@@ -1,0 +1,53 @@
+{% block head %}{% endblock %} {% block body%}
+<form action="">
+  {# id like to default to the current date and have option to change #}
+  <label for="date">Date</label>
+  {# set so it defaults to todays date #}
+  <input type="date" id="date" name="date" />
+  <div>
+    <label for="gratitude">Three things I am grateful for and why</label>
+    <ol>
+      <li>
+        <input type="text" id="gratitude" name="gratitude" /><input
+          type="text"
+          id="gratitude"
+          name="gratitude-reason"
+        />
+      </li>
+      <li>
+        <input type="text" id="gratitude" name="gratitude" /><input
+          type="text"
+          id="gratitude"
+          name="gratitude-reason"
+        />
+      </li>
+      <li>
+        <input type="text" id="gratitude" name="gratitude" /><input
+          type="text"
+          id="gratitude"
+          name="gratitude-reason"
+        />
+      </li>
+    </ol>
+  </div>
+  <label for="hrs-sleep">Hours Slept</label>
+  <input type="number" id="hrs-sleep" name="hrs-sleep" />
+  <label for="qual-sleep">Quality of Sleep</label>
+  <input type="number" id="qual-sleep" name="qual-sleep" />
+  <label for="snooze">How many time did you press snooze?</label>
+  <input type="number" id="snooze" name="snooze" />
+  <label for="goal"
+    >What is one goal or intention you'd feel good if you accomplished
+    today?</label
+  >
+  <input type="text" id="goal" name="goal" />
+  <label for="journal-entry">Morning Thoughts</label>
+  <textarea
+    name="journal-entry"
+    id="journal-entry"
+    cols="30"
+    rows="10"
+  ></textarea>
+  <button>Submit</button>
+</form>
+{% endblock %}
