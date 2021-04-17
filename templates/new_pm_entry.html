@@ -1,0 +1,16 @@
+{% block head %}{% endblock %} {% block body%}
+<form action="" id="new-pm-entry" methods="POST">
+  <label for="date">Date</label>
+  {# set so it defaults to todays date #}
+  <input type="date" id="date" name="date" />
+  <label for="activity-level">What was your activity level today?</label>
+  <input type="number" id="activity-level" name="activity-level" />
+  <label for="activity">Activity</label>
+  <input type="text" id="activity" name="activity" />
+  {# would like to show the goal the set that morning in the label prompt #}
+  <label for="goal-completed"
+    >Did you complete the goal you set this morning?</label
+  >
+  <input type="radio" />
+</form>
+{% endblock %}

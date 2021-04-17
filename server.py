@@ -93,7 +93,7 @@ def get_new_user_info():
 
     return render_template('profile.html', fname=fname, lname=lname, email=email, phone=phone, password=password, dob=dob, gender=gender)
     
-@app.route('/past_entries')
+@app.route('/past_entries', methods=['GET'])
 def past_entries():
     """Display past journal entries for user."""
     
@@ -105,13 +105,27 @@ def past_entries():
         
         return render_template('past_entries.html', entries=entries)
 
-        # dict = {date: morning, evening}
-        # return render_template('past_entries.html',
-                                # morning_entries=user.morning_entries,
-                                # evening_entries=user.evening_entries)
-
     else:
         return render_template('homepage.html')
+
+@app.route('/past_entries', methods=['POST'])
+def add_new_am_entry():
+    """Add new morning entry to db."""
+
+    date = request.form.get('date')
+    print(date)
+    # if statement if nothing is entered into hrs_sleep - becasue will be trying to convert to float on none -- if none leave as none if string cast to float
+    hrs_sleep = float(request.form.get('hrs-sleep'))
+    # same as above - if statement
+    qual_sleep = int(request.form.get('qual-sleep'))
+    snooze = int(request.form.get('snooze'))
+    goal = request.form.get('goal')
+    journal_entry = request.form.get('journal-entry')
+
+    new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
+
+    return redirect('/past_entries')
+
 
 @app.route('/new_am_entry')
 def new_am_entry():
@@ -139,26 +153,6 @@ def new_pm_route():
     else:
         return redirect('/')
 
-# @app.route('/past_entries', methods=['POST'])
-# def add_new_am_entry():
-#     """Add new morning entry to db."""
-
-#     date = requset.form.get('date')
-#     print(date)
-#     hrs_sleep = request.form.get('hrs_sleep')
-#     qual_sleep = request.form.get('qual_sleep')
-#     snooze = request.form.get('snooze')
-#     goal = request.form.get('goal')
-#     journal_entry = request.form.get('journal_entry')
-
-#     new_am_entry = crud.add_am_entry(date, hrs_sleep, qual_sleep, goal, journal_entry)
-
-#     session['user_id'] = new_am_entry.user_id
-#     print('**********')
-#     print(new_am_entry)
-#     print('user_id')
-
-#     return render_template('past_entries.html', date=date, hrs_sleep=hrs_sleep, qual_sleep=qual_sleep, snooze=snooze, goal=goal, journal_entry=journal_entry)
 
 @app.route('/logout')
 def logout():

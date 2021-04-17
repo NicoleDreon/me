@@ -33,10 +33,10 @@ def get_entries(user_id):
 
   return entries
 
-def add_am_entry(date, hrs_sleep, qual_sleep, snooze, goal, journal_entry):
+def add_am_entry(user_id, date, hrs_sleep, qual_sleep, snooze, goal, journal_entry):
   """Add new morning journal entry."""
 
-  new_am_entry = Morning_Entry(user_id=session['user_id'], date=date, hrs_sleep=hrs_sleep, qual_sleep=qual_sleep, snooze=snooze, goal=goal, journal_entry=journal_entry)
+  new_am_entry = Morning_Entry(user_id=user_id, date=date, hrs_sleep=hrs_sleep, qual_sleep=qual_sleep, snooze=snooze, goal=goal, journal_entry=journal_entry)
 
   db.session.add(new_am_entry)
   db.session.commit()
