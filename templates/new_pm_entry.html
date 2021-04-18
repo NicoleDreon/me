@@ -4,11 +4,20 @@
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
   <input type="date" id="date" name="date" />
-  <label for="activity-level">What was your activity level today?</label>
-  <input type="number" id="activity-level" name="activity-level" />
-  {# <label for="activity">Activity</label>
-  <input type="text" id="activity" name="activity" /> #} {# would like to show
-  the goal the set that morning in the label prompt #}
+  <div>
+    <label for="activity-level">How active were you today?</label>
+    <input type="radio" id="activity-level-1" name="activity-level" value="1" />
+    <label for="activity-level-1">1</label>
+    <input type="radio" id="activity-level-2" name="activity-level" value="2" />
+    <label for="activity-level-2">2</label>
+    <input type="radio" id="activity-level-3" name="activity-level" value="3" />
+    <label for="activity-level-3">3</label>
+    <input type="radio" id="activity-level-4" name="activity-level" value="4" />
+    <label for="activity-level-4">4</label>
+    <input type="radio" id="activity-level-5" name="activity-level" value="5" />
+    <label for="activity-level-5">5</label>
+  </div>
+  {# would like to show the goal the set that morning in the label prompt #}
   <div>
     <label for="qual-day">Overall quality of your day?</label>
     <input type="radio" id="qual-day-1" name="qual-day" value="1" />
