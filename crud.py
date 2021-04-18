@@ -26,9 +26,9 @@ def get_entries(user_id):
   """Create relationship between morning_entries and evening_entries tables for a speific user_id."""
 
   q = db.session.query(Morning_Entry, Evening_Entry)
-  q = q.filter(Evening_Entry.user_id == Morning_Entry.user_id)
-  q = q.outerjoin(Evening_Entry, Morning_Entry.date == Evening_Entry.date, full=True)
-  q = q.filter_by(user_id=user_id)
+  q = q.outerjoin(Evening_Entry, db.and_(Morning_Entry.date==Evening_Entry.date, Morning_Entry.user_id==Evening_Entry.user_id), full=True)
+  q = q.filter(db.or_(Morning_Entry.user_id==user_id, Evening_Entry.user_id==user_id))
+  q = q.order_by(Morning_Entry.date.desc(), Evening_Entry.date.desc())
   entries = q.all()
 
   return entries
