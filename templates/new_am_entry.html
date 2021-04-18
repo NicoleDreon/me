@@ -31,11 +31,21 @@
     </ol>
   </div>
   <label for="hrs-sleep">Hours Slept</label>
-  <input type="number" id="hrs-sleep" name="hrs-sleep" />
+  <input type="number" id="hrs-sleep" name="hrs-sleep" min="0" max="24" />
   <label for="qual-sleep">Quality of Sleep</label>
-  <input type="number" id="qual-sleep" name="qual-sleep" />
-  <label for="snooze">How many time did you press snooze?</label>
-  <input type="number" id="snooze" name="snooze" />
+  <input type="radio" id="qual-sleep-1" name="qual-sleep" value="1" />
+  <label for="qual-sleep-1">Horrible</label>
+  <input type="radio" id="qual-sleep-2" name="qual-sleep" value="2" />
+  <label for="qual-sleep-2">Ok</label>
+  <input type="radio" id="qual-sleep-3" name="qual-sleep" value="3" />
+  <label for="qual-sleep-3">Average</label>
+  <input type="radio" id="qual-sleep-4" name="qual-sleep" value="4" />
+  <label for="qual-sleep-4">Good</label>
+  <input type="radio" id="qual-sleep-5" name="qual-sleep" value="5" />
+  <label for="qual-sleep-5">Fantastic</label>
+
+  <label for="snooze">How many times did you press snooze?</label>
+  <input type="number" id="snooze" name="snooze" min="0" max="10" />
   <label for="goal"
     >What is one goal or intention you'd feel good if you accomplished
     today?</label
