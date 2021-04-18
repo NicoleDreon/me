@@ -1,16 +1,43 @@
-{% block head %}{% endblock %} {% block body%}
+{% block head %} <link rel="stylesheet" href="/static/styles.css" />{% endblock
+%} {% block body%}
 <form action="" id="new-pm-entry" methods="POST">
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
   <input type="date" id="date" name="date" />
   <label for="activity-level">What was your activity level today?</label>
   <input type="number" id="activity-level" name="activity-level" />
-  <label for="activity">Activity</label>
-  <input type="text" id="activity" name="activity" />
-  {# would like to show the goal the set that morning in the label prompt #}
-  <label for="goal-completed"
-    >Did you complete the goal you set this morning?</label
-  >
-  <input type="radio" />
+  {# <label for="activity">Activity</label>
+  <input type="text" id="activity" name="activity" /> #} {# would like to show
+  the goal the set that morning in the label prompt #}
+  <div>
+    <label for="qual-day">Overall quality of your day?</label>
+    <input type="radio" id="qual-day-1" name="qual-day" value="1" />
+    <label for="qual-day-1">Horrible</label>
+    <input type="radio" id="qual-day-2" name="qual-day" value="2" />
+    <label for="qual-day-2">Ok</label>
+    <input type="radio" id="qual-day-3" name="qual-day" value="3" />
+    <label for="qual-day-3">Average</label>
+    <input type="radio" id="qual-day-4" name="qual-day" value="4" />
+    <label for="qual-day-4">Good</label>
+    <input type="radio" id="qual-day-5" name="qual-day" value="5" />
+    <label for="qual-day-5">Fantastic</label>
+  </div>
+  <div>
+    <label for="goal-completed"
+      >Did you complete the goal you set this morning?</label
+    >
+    <input type="radio" id="yes" name="goal-completed" value="yes" />
+    <label for="yes">Yes</label>
+    <input type="radio" id="no" name="goal-completed" value="no" />
+    <label for="no">No</label>
+  </div>
+  <label for="journal-entry">Evening Thoughts</label>
+  <textarea
+    name="journal-entry"
+    id="journal-entry"
+    cols="30"
+    rows="10"
+  ></textarea>
+  <button>Submit</button>
 </form>
 {% endblock %}

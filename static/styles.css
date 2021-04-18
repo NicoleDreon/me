@@ -1,4 +1,6 @@
-#sign-up-form {
+#sign-up-form,
+#new-am-entry,
+#new-pm-entry {
   display: flex;
   flex-direction: column;
 }
