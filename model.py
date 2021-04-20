@@ -84,7 +84,7 @@ class Gratitude(db.Model):
     reason = db.Column(db.String, nullable=False)
 
     def __repr__(self):
-        return f'<Gratitude entry={self.gratitude_entry} reason={self.gratitude_reason}>'
+        return f'<Gratitude entry={self.entry} reason={self.reason}>'
 
     morning_entries = db.relationship('Morning_Entry', backref='gratitudes')
 

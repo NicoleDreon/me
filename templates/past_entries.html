@@ -5,34 +5,34 @@
   <li><a href="/profile">View Profile</a></li>
   <li><a href="/logout">Logout</a></li>
 </ul>
-{% for morning_entry, evening_entry in entries %}
-
+{% for morning_entry, evening_entry in entries %} {% if morning_entry != None %}
 <h3>{{morning_entry.date}}</h3>
-<h4>Morning Entry</h4>
+<h4>Morning</h4>
 <ul>
-  Gratitude:
+  Gratitude: {% for gratitude in morning_entry.gratitudes %}
+  <li>{{gratitude.entry}}: {{gratitude.reason}}</li>
+  {% endfor %}
 </ul>
-
-{% for gratitude in morning_entry.gratitudes %}
-<li>{{gratitude.entry}}: {{gratitude.reason}}</li>
-{% endfor %}
-
 <p>Hours slept: {{morning_entry.hrs_sleep}}</p>
 <p>Quality of sleep: {{morning_entry.qual_sleep}}</p>
 <p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
 <p>Intention/Goal: {{morning_entry.goal}}</p>
 <p>Jornal Entry: {{morning_entry.journal_entry}}</p>
-<h4>Evening Entry</h4>
+{% else %}
+<p>no entry</p>
+{% endif %}
+<h4>Evening</h4>
+{% if evening_entry %}
+
 <p>Activity Level: {{evening_entry.activity_level}}</p>
-<p>Activity: {{evening_entry.activity}}</p>
 <p>Goal Completed: {{evening_entry.goal_completed}}</p>
 <p>Overall Rating for Day: {{evening_entry.qual_day}}</p>
 <ul>
-  Emotions:
+  Emotions: {% for emotion_entry in evening_entry.emotion_entries %}
+  <li>{{emotion_entry.emotion.emotion}}</li>
+  {% endfor %}
 </ul>
-{% for emotion_entry in evening_entry.emotion_entries %}
-<li>{{emotion_entry.emotion.emotion}}</li>
-{% endfor %}
 <p>Journal Entry: {{evening_entry.journal_entry}}</p>
-
-{% endfor %} {% endblock %}
+{% else %}
+<p>no entry</p>
+{% endif %} {% endfor %} {% endblock %}

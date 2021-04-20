@@ -4,10 +4,11 @@ import os
 from datetime import datetime
 
 from model import db, User, Morning_Entry, Gratitude, Evening_Entry, Emotion_Entry, Emotion, connect_to_db
+
 os.system('dropdb entries')
 os.system('createdb entries')
-connect_to_db(server.app)
 
+connect_to_db(server.app)
 db.create_all()
   
 
@@ -93,7 +94,21 @@ db.session.commit()
 # user.morning_entries
 # user.emotions
 
+# test = db.session.query(User).filter_by(user_id = 1).one()
+# am = test_user.morning_entries
+# for entry in am:
+#   gratitudes = entry.gratitudes
+#   for gratitude in gratitudes:
+#     print(gratitude.entry)
+#     print(gratitude.reason)
 
+# test = db.session.query(User).filter_by(user_id = 1).all()
+# test = test.morning_entries
+# for x in test:
+    # for y in test.gratitudes:
+    #   print(y)
+    # print(x)
 
-
-
+# write in crud
+# call in server in past_entries route
+# jinja to display
