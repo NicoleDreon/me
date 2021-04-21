@@ -5,9 +5,11 @@
   <li><a href="/profile">View Profile</a></li>
   <li><a href="/logout">Logout</a></li>
 </ul>
-{% for morning_entry, evening_entry in entries %} {% if morning_entry != None %}
+{% for morning_entry, evening_entry in entries %}
 <h3>{{morning_entry.date}}</h3>
 <h4>Morning</h4>
+{% if morning_entry != None %}
+
 <ul>
   Gratitude: {% for gratitude in morning_entry.gratitudes %}
   <li>{{gratitude.entry}}: {{gratitude.reason}}</li>

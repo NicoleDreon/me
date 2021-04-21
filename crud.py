@@ -43,6 +43,28 @@ def add_am_entry(user_id, date, hrs_sleep, qual_sleep, snooze, goal, journal_ent
 
   return new_am_entry
 
+def add_pm_entry(user_id, date, activity_level, qual_day, goal_completed, journal_entry):
+  """Add new evening journal entry."""
+
+  new_pm_entry = Evening_Entry(user_id=user_id, date=date, activity_level=activity_level, qual_day=qual_day, goal_completed=goal_completed, journal_entry=journal_entry)
+
+  db.session.add(new_pm_entry)
+  db.session.commit()
+
+  return new_pm_entry
+
+# create function to check am entry by date
+# (date)
+# query am entry to filter by date
+# retrun all rows that have matching date 
+# server side if retruns - act normal if not flash message entry already exists
+
+def get_am_entry_by_date(date):
+  """Return morning entry by date."""
+
+  return Morning_Entry.query.filter_by(date=date).first()
+
+
 if __name__ == '__main__':
     from server import app
     connect_to_db(app)

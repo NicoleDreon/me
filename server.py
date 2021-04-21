@@ -86,14 +86,16 @@ def get_new_user_info():
     dob = datetime.today()
     gender = request.form.get('gender')
     print(password)
-
+    # check_login with email that was given
+    # if it returns user redirect to login - flash message user exists
+    # if returns none(else) implement the rest of function
     new_user = crud.add_user(fname, lname, email, phone, dob, gender, password)
 
     session['user_id'] = new_user.user_id
 
     return render_template('profile.html', fname=fname, lname=lname, email=email, phone=phone, password=password, dob=dob, gender=gender)
     
-@app.route('/past_entries', methods=['GET'])
+@app.route('/past_entries', methods=['GET', 'POST'])
 def past_entries():
     """Display past journal entries for user."""
     
@@ -108,12 +110,13 @@ def past_entries():
     else:
         return render_template('homepage.html')
 
-@app.route('/past_entries', methods=['POST'])
+
+@app.route('/handle_new_am_entry', methods=['POST'])
 def add_new_am_entry():
     """Add new morning entry to db."""
 
     date = request.form.get('date')
-    print(date)
+    # print(date)
     # if statement if nothing is entered into hrs_sleep - becasue will be trying to convert to float on none -- if none leave as none if string cast to float
     hrs_sleep = float(request.form.get('hrs-sleep'))
     # same as above - if statement
@@ -125,6 +128,28 @@ def add_new_am_entry():
     new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
 
     return redirect('/past_entries')
+
+
+@app.route('/handle_new_pm_entry', methods=['POST'])
+def add_new_pm_entry():
+    """Add new evening entry to db."""
+
+    date = request.form.get('date')
+    activity_level = request.form.get('activity-level')
+    qual_day = request.form.get('qual-day')
+    goal_completed = bool(int(request.form.get('goal-completed')))
+    journal_entry = request.form.get('journal-entry')
+
+    if crud.get_am_entry_by_date(date):
+        flash('Evening entry for this day alreay exists')
+        return redirect('/new_pm_entry')
+
+    else:
+        new_pm_entry = crud.add_pm_entry(session['user_id'], date, activity_level, qual_day, goal_completed, journal_entry)
+
+        return redirect('/past_entries')
+        
+
 
 
 @app.route('/new_am_entry')

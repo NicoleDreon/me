@@ -1,6 +1,9 @@
 {% block head %} <link rel="stylesheet" href="/static/styles.css" />{% endblock
-%} {% block body%}
-<form action="" id="new-pm-entry" methods="POST">
+%} {% block body%} {% with messages = get_flashed_messages() %} {% if messages
+%} {% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %} {% endif %} {% endwith %}
+<form action="/handle_new_pm_entry" id="new-pm-entry" method="POST">
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
   <input type="date" id="date" name="date" />
@@ -35,9 +38,9 @@
     <label for="goal-completed"
       >Did you complete the goal you set this morning?</label
     >
-    <input type="radio" id="yes" name="goal-completed" value="yes" />
+    <input type="radio" id="yes" name="goal-completed" value="1" />
     <label for="yes">Yes</label>
-    <input type="radio" id="no" name="goal-completed" value="no" />
+    <input type="radio" id="no" name="goal-completed" value="0" />
     <label for="no">No</label>
   </div>
   <label for="journal-entry">Evening Thoughts</label>
