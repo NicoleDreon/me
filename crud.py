@@ -53,17 +53,16 @@ def add_pm_entry(user_id, date, activity_level, qual_day, goal_completed, journa
 
   return new_pm_entry
 
-# create function to check am entry by date
-# (date)
-# query am entry to filter by date
-# retrun all rows that have matching date 
-# server side if retruns - act normal if not flash message entry already exists
 
 def get_am_entry_by_date(date):
   """Return morning entry by date."""
 
   return Morning_Entry.query.filter_by(date=date).first()
 
+def get_pm_entry_by_date(date):
+  """Return evening entry by date."""
+
+  return Evening_Entry.query.filter_by(date=date).first()
 
 if __name__ == '__main__':
     from server import app

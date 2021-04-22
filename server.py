@@ -125,9 +125,14 @@ def add_new_am_entry():
     goal = request.form.get('goal')
     journal_entry = request.form.get('journal-entry')
 
-    new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
+    if crud.get_am_entry_by_date(date):
+        flash('Morning entry for this day alreay exists')
+        return redirect('/new_am_entry')
 
-    return redirect('/past_entries')
+    else:
+        new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
+
+        return redirect('/past_entries')
 
 
 @app.route('/handle_new_pm_entry', methods=['POST'])
@@ -140,7 +145,7 @@ def add_new_pm_entry():
     goal_completed = bool(int(request.form.get('goal-completed')))
     journal_entry = request.form.get('journal-entry')
 
-    if crud.get_am_entry_by_date(date):
+    if crud.get_pm_entry_by_date(date):
         flash('Evening entry for this day alreay exists')
         return redirect('/new_pm_entry')
 
