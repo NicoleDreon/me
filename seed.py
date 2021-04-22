@@ -1,7 +1,6 @@
 """Populate database."""
 import server
 import os
-from datetime import datetime
 
 from model import db, User, Morning_Entry, Gratitude, Evening_Entry, Emotion_Entry, Emotion, connect_to_db
 
