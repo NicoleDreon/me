@@ -23,8 +23,7 @@
 <p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
 <p>Intention/Goal: {{morning_entry.goal}}</p>
 <p>Jornal Entry: {{morning_entry.journal_entry}}</p>
-{% else %} {# grab evening date in button and link button to a new template
-(edit form) #}
+{% else %}
 <a href="/add_missing_am_entry?date={{evening_entry.date}}">add entry</a>
 {% endif %}
 <h4>Evening</h4>
@@ -40,5 +39,5 @@
 </ul>
 <p>Journal Entry: {{evening_entry.journal_entry}}</p>
 {% else %}
-<p>no entry</p>
+<a href="/add_missing_pm_entry?date={{morning_entry.date}}">add entry</a>
 {% endif %} {% endfor %} {% endblock %}

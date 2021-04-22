@@ -195,6 +195,15 @@ def add_missing_am_entry():
 
     return render_template('add_missing_am_entry.html', date=date_formated)
 
+@app.route('/add_missing_pm_entry')
+def add_missing_pm_entry():
+    """Add a missing pm entry."""
+
+    date = request.args.get('date')
+    date_time = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+    date_formated = date_time.strftime('%Y-%m-%d') 
+
+    return render_template('add_missing_pm_entry.html', date=date_formated)
 
 
 @app.route('/logout')
