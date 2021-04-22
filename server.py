@@ -83,6 +83,7 @@ def get_new_user_info():
     email = request.form.get('email')
     phone = request.form.get('phone')
     password = request.form.get('password')
+    # ????????????????????????
     dob = datetime.today()
     gender = request.form.get('gender')
     print(password)
@@ -182,6 +183,18 @@ def new_pm_route():
 
     else:
         return redirect('/')
+
+@app.route('/add_missing_am_entry')
+def add_missing_am_entry():
+    """Add a missing am entry."""
+
+    date = request.args.get('date')
+    date_time = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
+    date_formated = date_time.strftime('%Y-%m-%d')
+    print(date_formated)
+
+    return render_template('add_missing_am_entry.html', date=date_formated)
+
 
 
 @app.route('/logout')

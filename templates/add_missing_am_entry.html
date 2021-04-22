@@ -1,0 +1,65 @@
+{% block head %} <link rel="stylesheet" href="/static/styles.css" />{% endblock
+%} {% block body%}
+<form action="/handle_new_am_entry" id="new-am-entry" method="POST">
+  {# id like to default to the current date and have option to change #}
+  <label for="date">Date</label>
+  {# set so it defaults to todays date #}
+  <input type="date" id="date" name="date" value="{{date}}" disabled="True" />
+  <div>
+    <label for="gratitude">Three things I am grateful for and why</label>
+    <ol>
+      <li>
+        <input type="text" id="gratitude" name="gratitude" /><input
+          type="text"
+          id="gratitude"
+          name="gratitude-reason"
+        />
+      </li>
+      <li>
+        <input type="text" id="gratitude" name="gratitude" /><input
+          type="text"
+          id="gratitude"
+          name="gratitude-reason"
+        />
+      </li>
+      <li>
+        <input type="text" id="gratitude" name="gratitude" /><input
+          type="text"
+          id="gratitude"
+          name="gratitude-reason"
+        />
+      </li>
+    </ol>
+  </div>
+  <label for="hrs-sleep">Hours Slept</label>
+  <input type="number" id="hrs-sleep" name="hrs-sleep" min="0" max="24" />
+  <div>
+    <label for="qual-sleep">Quality of Sleep</label>
+    <input type="radio" id="qual-sleep-1" name="qual-sleep" value="1" />
+    <label for="qual-sleep-1">Horrible</label>
+    <input type="radio" id="qual-sleep-2" name="qual-sleep" value="2" />
+    <label for="qual-sleep-2">Ok</label>
+    <input type="radio" id="qual-sleep-3" name="qual-sleep" value="3" />
+    <label for="qual-sleep-3">Average</label>
+    <input type="radio" id="qual-sleep-4" name="qual-sleep" value="4" />
+    <label for="qual-sleep-4">Good</label>
+    <input type="radio" id="qual-sleep-5" name="qual-sleep" value="5" />
+    <label for="qual-sleep-5">Fantastic</label>
+  </div>
+  <label for="snooze">How many times did you press snooze?</label>
+  <input type="number" id="snooze" name="snooze" min="0" max="10" />
+  <label for="goal"
+    >What is one goal or intention you'd feel good if you accomplished
+    today?</label
+  >
+  <input type="text" id="goal" name="goal" />
+  <label for="journal-entry">Morning Thoughts</label>
+  <textarea
+    name="journal-entry"
+    id="journal-entry"
+    cols="30"
+    rows="10"
+  ></textarea>
+  <button>Submit</button>
+</form>
+{% endblock %}
