@@ -6,7 +6,7 @@
 <form action="/handle_new_pm_entry" id="new-pm-entry" method="POST">
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
-  <input type="date" id="date" name="date" />
+  <input type="date" id="date" name="date" required />
   <div>
     <label for="activity-level">How active were you today?</label>
     <input type="radio" id="activity-level-1" name="activity-level" value="1" />
@@ -43,6 +43,19 @@
     <input type="radio" id="no" name="goal-completed" value="0" />
     <label for="no">No</label>
   </div>
+
+  <label>Top three emotions for the day</label>
+  <ol>
+    <li>
+      <input type="text" id="emotion" name="emotion" />
+    </li>
+    <li>
+      <input type="text" id="emotion" name="emotion" />
+    </li>
+    <li>
+      <input type="text" id="emotion" name="emotion" />
+    </li>
+  </ol>
   <label for="journal-entry">Evening Thoughts</label>
   <textarea
     name="journal-entry"

@@ -117,7 +117,6 @@ def add_new_am_entry():
     """Add new morning entry to db."""
 
     date = request.form.get('date')
-    # print(date)
     # if statement if nothing is entered into hrs_sleep - becasue will be trying to convert to float on none -- if none leave as none if string cast to float
     hrs_sleep = float(request.form.get('hrs-sleep'))
     # same as above - if statement
