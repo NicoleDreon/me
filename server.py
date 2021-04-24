@@ -17,7 +17,7 @@ def homepage():
     """View homepage."""
 
     quote = zen_quotes.get_quote()
-
+    print(quote)
     if 'user_id' in session:
         return redirect('/past_entries')
     else:
@@ -112,6 +112,7 @@ def past_entries():
         user_id = user.user_id
         entries = crud.get_entries(user_id)
         print(entries)
+        print(quote)
         
         return render_template('past_entries.html', entries=entries, quote=quote)
 
