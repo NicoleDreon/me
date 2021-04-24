@@ -6,6 +6,7 @@ from model import connect_to_db
 from datetime import datetime
 
 import crud
+import zen_quotes
 
 app = Flask(__name__)
 app.secret_key = 'key'
@@ -15,10 +16,12 @@ app.secret_key = 'key'
 def homepage():
     """View homepage."""
 
+    quote = zen_quotes.get_quote()
+
     if 'user_id' in session:
         return redirect('/past_entries')
     else:
-        return render_template('homepage.html')
+        return render_template('homepage.html', quote=quote)
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -100,13 +103,17 @@ def get_new_user_info():
 def past_entries():
     """Display past journal entries for user."""
     
+    
+
     if 'user_id' in session:
+
+        quote = zen_quotes.get_quote()
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
         entries = crud.get_entries(user_id)
         print(entries)
         
-        return render_template('past_entries.html', entries=entries)
+        return render_template('past_entries.html', entries=entries, quote=quote)
 
     else:
         return render_template('homepage.html')
@@ -211,6 +218,7 @@ def logout():
 
     session.pop('user_id', None)
     return redirect('/')
+
 
 
 if __name__ == '__main__':

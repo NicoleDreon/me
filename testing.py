@@ -44,10 +44,10 @@ class CheckLoginTestCase(unittest.TestCase):
       server.app.config['TESTING'] = True
       connect_to_db(server.app, 'postgresql:///test')
 
-  # def test_check_login(self):
-  #   """."""
+  def test_check_login(self):
+    """."""
 
-  #   assert crud.check_login('noelle@gmail.com') == '< User user_id = 1 fname = Noelle lname = Smith email = noelle@gmail.com, phone=None password = letsdothis dob = 1982-09-12 00:00:00 gender = Female >'
+    assert crud.check_login('noelle@gmail.com') == '< User user_id = 1 fname = Noelle lname = Smith email = noelle@gmail.com, phone=None password = letsdothis dob = 1982-09-12 00:00:00 gender = Female >'
 
 
 if __name__ == "__main__":

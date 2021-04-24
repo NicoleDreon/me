@@ -5,6 +5,10 @@
   <li><a href="/profile">View Profile</a></li>
   <li><a href="/logout">Logout</a></li>
 </ul>
+<blockquote>
+  &ldquo;{{quote['q']}}&rdquo;
+  <footer>&mdash;{{quote['a']}}</footer>
+</blockquote>
 {% for morning_entry, evening_entry in entries %} {% if morning_entry %}
 <h3>{{morning_entry.date}}</h3>
 {% else %}
