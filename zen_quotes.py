@@ -16,8 +16,9 @@ def get_quote():
   
   global quote_of_the_day
   global quote_of_the_day_last_recieved
+  quote_of_the_day_has_expired = quote_of_the_day_last_recieved == None or quote_of_the_day_last_recieved.date() != datetime.datetime.today().date()
 
-  if quote_of_the_day_last_recieved == None or quote_of_the_day_last_recieved.date() != datetime.datetime.today().date():
+  if quote_of_the_day_has_expired:
     quote_of_the_day = None
 
   if quote_of_the_day == None:
