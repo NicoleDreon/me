@@ -6,25 +6,6 @@ from flask_sqlalchemy import SQLAlchemy
 db = SQLAlchemy()
 
 
-
-# def test_data():
-#     """Create sample data."""
-
-#     User.query.delete()
-
-#     user1 = User(fname='Noelle', lname='Smith',
-#                  email='noelle@gmail.com', password='letsdothis', dob='09-12-1982', gender='Female')
-#     user2 = User(fname='Nicole', lname='Dreon',
-#                  email='nicole@yahoo.com', password='sunshine', dob='08-28-1985', gender='Female')
-#     user3 = User(fname='Brian', lname='Roberts',
-#                  email='broberts@gmail.com', password='music', dob='12-17-1990', gender='Male')
-#     user4 = User(fname='Skylar', lname='Jones', email='skylerjones@mail.com',
-#                  password='password', dob='04-18-2001', gender='non-bianary')
-
-#     db.session.add_all([user1, user2, user3, user4])
-#     db.session.commit()
-
-
 class User(db.Model):
     """A user."""
 
