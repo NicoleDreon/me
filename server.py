@@ -7,6 +7,7 @@ from datetime import datetime
 
 import crud
 import zen_quotes
+import helper_functions
 
 app = Flask(__name__)
 app.secret_key = 'key'
@@ -117,32 +118,15 @@ def past_entries():
     else:
         return render_template('homepage.html')
 
-def cast_int(str):
-    """Cast string to int if a value is given."""
-
-    try:
-        num = int(str)
-        return num
-    except(ValueError, TypeError):
-        return None
-
-def cast_float(str):
-    """Cast string to float if a value is given."""
-
-    try:
-        num = float(str)
-        return num
-    except(ValueError, TypeError):
-        return None
 
 @app.route('/handle_new_am_entry', methods=['POST'])
 def add_new_am_entry():
     """Add new morning entry to db."""
 
     date = request.form.get('date')
-    hrs_sleep = cast_float(request.form.get('hrs-sleep'))
-    qual_sleep = cast_int(request.form.get('qual-sleep'))
-    snooze = cast_int(request.form.get('snooze'))
+    hrs_sleep = helper_functions.cast_float(request.form.get('hrs-sleep'))
+    qual_sleep = helper_functions.cast_int(request.form.get('qual-sleep'))
+    snooze = helper_functions.cast_int(request.form.get('snooze'))
     goal = request.form.get('goal')
     journal_entry = request.form.get('journal-entry')
     entries = request.form.getlist('gratitude')
@@ -166,7 +150,7 @@ def add_new_pm_entry():
     date = request.form.get('date')
     activity_level = request.form.get('activity-level')
     qual_day = request.form.get('qual-day')
-    goal_completed = bool(cast_int((request.form.get('goal-completed'))))
+    goal_completed = bool(helper_functions.cast_int((request.form.get('goal-completed'))))
     journal_entry = request.form.get('journal-entry')
 
     if crud.get_pm_entry_by_date(date):
