@@ -1,8 +1,6 @@
-{% block head %} <link rel="stylesheet" href="/static/styles.css" />{% endblock
-%} {% block body%} {% with messages = get_flashed_messages() %} {% if messages
-%} {% for message in messages %}
-<p>{{ message }}</p>
-{% endfor %} {% endif %} {% endwith %}
+{% extends 'base.html' %}{% block head %}
+<link rel="stylesheet" href="/static/styles.css" />{% endblock %} {% block
+body%}
 <form action="/handle_new_am_entry" id="new-am-entry" method="POST">
   {# id like to default to the current date and have option to change #}
   <label for="date">Date</label>
