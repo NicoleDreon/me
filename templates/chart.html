@@ -1,0 +1,10 @@
+{% extends 'base.html' %} {% block head %}
+<script src="https://code.jquery.com/jquery.js"></script>
+{% endblock %} {% block body %}
+<div class="melon-chart">
+  <canvas id="lineChart"></canvas>
+  <div id="lineLegend" class="chart-legend"></div>
+</div>
+
+<script src="/static/chart.js"></script>
+{% endblock %}
