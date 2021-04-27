@@ -7,10 +7,12 @@ def check_login(email):
     
   return User.query.filter_by(email=email).first()
 
+
 def get_user(user_id):
   """Return user by id."""
 
   return User.query.filter_by(user_id=user_id).first()
+
 
 def add_user(fname, lname, email, phone, dob, gender, password):
   """Add new user to db."""
@@ -21,6 +23,7 @@ def add_user(fname, lname, email, phone, dob, gender, password):
   db.session.commit()
 
   return new_user
+
 
 def get_entries(user_id):
   """Create relationship between morning_entries and evening_entries tables for a speific user_id."""
@@ -33,6 +36,7 @@ def get_entries(user_id):
 
   return entries
 
+
 def add_am_entry(user_id, date, hrs_sleep, qual_sleep, snooze, goal, journal_entry):
   """Add new morning journal entry."""
 
@@ -42,6 +46,32 @@ def add_am_entry(user_id, date, hrs_sleep, qual_sleep, snooze, goal, journal_ent
   db.session.commit()
 
   return new_am_entry
+
+
+def add_gratitude_entry(am_entry_id, entry, reason):
+  """Add new gratitude entry."""
+
+  new_gratitude_entry = Gratitude(am_entry_id=am_entry_id, entry=entry, reason=reason)
+
+  db.session.add(new_gratitude_entry)
+  db.session.commit()
+
+  return new_gratitude_entry
+
+def add_am_entries_gratitudes(am_entry_id, entries, reasons):
+  """."""
+    
+  if len(entries) != len(reasons):
+    return 'not matched'
+  
+  for i in range(len(entries)):
+    entry = entries[i]
+    reason = reasons[i]
+
+    add_gratitude_entry(am_entry_id, entry, reason)
+
+  return 'success'
+
 
 def add_pm_entry(user_id, date, activity_level, qual_day, goal_completed, journal_entry):
   """Add new evening journal entry."""
@@ -59,10 +89,12 @@ def get_am_entry_by_date(date):
 
   return Morning_Entry.query.filter_by(date=date).first()
 
+
 def get_pm_entry_by_date(date):
   """Return evening entry by date."""
 
   return Evening_Entry.query.filter_by(date=date).first()
+  
 
 if __name__ == '__main__':
     from server import app

@@ -1,5 +1,8 @@
 {% block head %} <link rel="stylesheet" href="/static/styles.css" />{% endblock
-%} {% block body%}
+%} {% block body%} {% with messages = get_flashed_messages() %} {% if messages
+%} {% for message in messages %}
+<p>{{ message }}</p>
+{% endfor %} {% endif %} {% endwith %}
 <form action="/handle_new_am_entry" id="new-am-entry" method="POST">
   {# id like to default to the current date and have option to change #}
   <label for="date">Date</label>
@@ -9,23 +12,23 @@
     <label for="gratitude">Three things I am grateful for and why</label>
     <ol>
       <li>
-        <input type="text" id="gratitude" name="gratitude" /><input
+        <input type="text" id="gratitude1" name="gratitude" /><input
           type="text"
-          id="gratitude"
+          id="gratitude-reason1"
           name="gratitude-reason"
         />
       </li>
       <li>
-        <input type="text" id="gratitude" name="gratitude" /><input
+        <input type="text" id="gratitude2" name="gratitude" /><input
           type="text"
-          id="gratitude"
+          id="gratitude-reson2"
           name="gratitude-reason"
         />
       </li>
       <li>
-        <input type="text" id="gratitude" name="gratitude" /><input
+        <input type="text" id="gratitude3" name="gratitude" /><input
           type="text"
-          id="gratitude"
+          id="gratitude-reason3"
           name="gratitude-reason"
         />
       </li>

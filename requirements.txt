@@ -16,3 +16,4 @@ urllib3==1.25.9
 Werkzeug==1.0.1
 zipp==3.4.1
 requests==2.25.1
+chart.js==3.2.0

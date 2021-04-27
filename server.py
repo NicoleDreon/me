@@ -53,9 +53,7 @@ def sign_up():
     else:
         return render_template('sign_up.html')
 
-# if user not in session send to /
-# if user in session
-# display info by query db
+
 @app.route('/profile')
 def profile():
     """Display user profile information."""
@@ -132,6 +130,13 @@ def add_new_am_entry():
     snooze = int(request.form.get('snooze'))
     goal = request.form.get('goal')
     journal_entry = request.form.get('journal-entry')
+    entries = request.form.getlist('gratitude')
+    reasons = request.form.getlist('gratitude-reason')
+    
+    print('???????????????????????????/')
+    print(entries)
+    print(reasons)
+    print('\n\n\n\n\n')
 
     if crud.get_am_entry_by_date(date):
         flash('Morning entry for this day alreay exists')
@@ -139,6 +144,7 @@ def add_new_am_entry():
 
     else:
         new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
+        new_gratitude = crud.add_am_entries_gratitudes(new_am_entry.am_entry_id, entries, reasons)
 
         return redirect('/past_entries')
 
