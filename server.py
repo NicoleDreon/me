@@ -228,7 +228,7 @@ def chart():
             data_dict[entry.date.strftime('%Y-%m-%d')]['activity_level'] = entry.activity_level
             data_dict[entry.date.strftime('%Y-%m-%d')]['goal_completed'] = entry.goal_completed
         else:
-            data_dict[entry.date.strftime('%Y-%m-%d')] = {'qual_day': str(entry.qual_day), 'activity_level': entry.activity_level, 'goal_completed': entry.goal_completed}
+            data_dict[entry.date.strftime('%Y-%m-%d')] = {'qual_day': entry.qual_day, 'activity_level': entry.activity_level, 'goal_completed': entry.goal_completed}
 
     print(data_dict)
     

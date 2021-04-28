@@ -31,7 +31,6 @@ class MeIntegrationTestCase(unittest.TestCase):
 
     self.assertIn(b'<li><a href="/logout">Logout</a></li>', result.data)
 
-  def test
 
 class CheckLoginTestCase(unittest.TestCase):
   """Unit test to test check_login fuction."""
