@@ -101,8 +101,6 @@ def get_new_user_info():
 @app.route('/past_entries', methods=['GET', 'POST'])
 def past_entries():
     """Display past journal entries for user."""
-    
-    
 
     if 'user_id' in session:
 

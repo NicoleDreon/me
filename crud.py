@@ -2,6 +2,8 @@
 
 from model import db, User, Morning_Entry, Gratitude, Evening_Entry, Emotion_Entry, Emotion, connect_to_db
 
+import datetime
+
 def check_login(email):
   """Check if user exists in db."""
     
@@ -59,7 +61,7 @@ def add_gratitude_entry(am_entry_id, entry, reason):
   return new_gratitude_entry
 
 def add_am_entries_gratitudes(am_entry_id, entries, reasons):
-  """."""
+  """Add gratitudes to morning entry."""
     
   if len(entries) != len(reasons):
     return 'not matched'
@@ -94,6 +96,28 @@ def get_pm_entry_by_date(date):
   """Return evening entry by date."""
 
   return Evening_Entry.query.filter_by(date=date).first()
+
+def get_am_entry_by_date_range():
+  """Return morning entries in a given date range."""
+
+  q = db.session.query(Morning_Entry)
+  q = q.filter(Morning_Entry.date >= datetime.date(2021, 4, 7))
+  q = q.filter(Morning_Entry.date <= datetime.date(2021, 4, 14))
+  q = q.filter(Morning_Entry.user_id==1)
+  am_entries = q.all()
+
+  return am_entries
+
+def get_pm_entry_by_date_range():
+  """Return evening entries in a given date range."""
+
+  q = db.session.query(Evening_Entry)
+  q = q.filter(Evening_Entry.date >= datetime.date(2021, 4, 7))
+  q = q.filter(Evening_Entry.date <= datetime.date(2021, 4, 14))
+  q = q.filter(Evening_Entry.user_id==1)
+  pm_entries = q.all()
+
+  return pm_entries
   
 
 if __name__ == '__main__':
