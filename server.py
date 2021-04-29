@@ -88,7 +88,6 @@ def get_new_user_info():
     # ????????????????????????
     dob = datetime.today()
     gender = request.form.get('gender')
-    print(password)
     # check_login with email that was given
     # if it returns user redirect to login - flash message user exists
     # if returns none(else) implement the rest of function
@@ -218,19 +217,15 @@ def chart():
     data_dict = {}
 
     for entry in am_entries:
-        data_dict[entry.date.strftime('%Y-%m-%d')] = {'hrs_sleep': str(entry.hrs_sleep), 'qual_sleep': entry.qual_sleep, 'snooze': entry.snooze}
-    
-        print(entry.date.strftime('%Y-%m-%d'))
+        data_dict[entry.date.strftime('%b %d, %Y')] = {'hrs_sleep': str(entry.hrs_sleep), 'qual_sleep': entry.qual_sleep, 'snooze': entry.snooze}
 
     for entry in pm_entries:
-        if entry.date.strftime('%Y-%m-%d') in data_dict:
-            data_dict[entry.date.strftime('%Y-%m-%d')]['qual_day'] = entry.qual_day
-            data_dict[entry.date.strftime('%Y-%m-%d')]['activity_level'] = entry.activity_level
-            data_dict[entry.date.strftime('%Y-%m-%d')]['goal_completed'] = entry.goal_completed
+        if entry.date.strftime('%b %d, %Y') in data_dict:
+            data_dict[entry.date.strftime('%b %d, %Y')]['qual_day'] = entry.qual_day
+            data_dict[entry.date.strftime('%b %d, %Y')]['activity_level'] = entry.activity_level
+            data_dict[entry.date.strftime('%b %d, %Y')]['goal_completed'] = entry.goal_completed
         else:
-            data_dict[entry.date.strftime('%Y-%m-%d')] = {'qual_day': entry.qual_day, 'activity_level': entry.activity_level, 'goal_completed': entry.goal_completed}
-
-    print(data_dict)
+            data_dict[entry.date.strftime('%b %d, %Y')] = {'qual_day': entry.qual_day, 'activity_level': entry.activity_level, 'goal_completed': entry.goal_completed}
     
     return jsonify(data_dict)
     
