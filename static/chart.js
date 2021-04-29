@@ -7,21 +7,35 @@ const options = {
 let ctx = $("#lineChart").get(0).getContext("2d");
 
 $.get("/chart.json", (data) => {
-  console.log(data);
+  const labels = [];
+  const hrs_sleep = [];
+  const qual_sleep = [];
+  const snooze = [];
+  const activity_level = [];
+  const qual_day = [];
+
+  for (let entry in data) {
+    labels.push(entry);
+    hrs_sleep.push(data[entry]["hrs_sleep"]);
+    qual_sleep.push(data[entry]["qual_sleep"]);
+    snooze.push(data[entry]["snooze"]);
+    activity_level.push(data[entry]["activity_level"]);
+    qual_day.push(data[entry]["qual_day"]);
+  }
+
+  let myLineChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        { label: "Hours Slept", data: hrs_sleep },
+        { label: "Quality Sleep", data: qual_sleep },
+        { label: "Snooze", data: snooze },
+        { label: "Activity Level", data: activity_level },
+        { label: "Quality of Day", data: qual_day },
+      ],
+    },
+    options: options,
+  });
+  $("#lineLegend").html(myLineChart.generateLegend());
 });
-
-// $.get("/chart.json", function (data) {
-//   let myLineChart = new Chart(ctx, {
-//     type: "line",
-//     data: data,
-//     options: options,
-//   });
-//   $("#lineLegend").html(myLineChart.generateLegend());
-// });
-
-// server
-// ajax make route /chart.json (line 9 is ajax get request)
-// return data from db - sql alchemy
-//  callback function (function definition or arrow function) retrives data
-// body of callback is what we do with the data
-// query that grabs all the information
