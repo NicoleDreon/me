@@ -24,6 +24,11 @@ def homepage():
     else:
         return render_template('homepage.html', quote=quote)
 
+@app.route('/about')
+def about():
+    """View about page."""
+
+    return render_template('about.html')
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -107,8 +112,6 @@ def past_entries():
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
         entries = crud.get_entries(user_id)
-        print(entries)
-        print(quote)
         
         return render_template('past_entries.html', entries=entries, quote=quote)
 
