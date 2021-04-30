@@ -1,5 +1,7 @@
-{% block head%}<link rel="stylesheet" href="../static/styles.css" />{% endblock
-%} {% block body %}
+{% extends 'base.html' %}{% block head%}<link
+  rel="stylesheet"
+  href="../static/styles.css"
+/>{% endblock %} {% block body %}
 <form action="/profile" id="sign-up-form" method="POST">
   <label for="fname">First Name</label>
   <input type="text" id="fname" name="fname" required />

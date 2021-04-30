@@ -1,47 +1,53 @@
-{% block head %} {% endblock %} {% block body %}
-<ul>
-  <li><a href="/new_am_entry">New Morning Entry</a></li>
-  <li><a href="/new_pm_entry">New Evening Entry</a></li>
-  <li><a href="/profile">View Profile</a></li>
-  <li><a href="/logout">Logout</a></li>
-</ul>
+{% extends 'base.html' %}{% block head %} {% endblock %} {% block body %}
 <blockquote>
   &ldquo;{{quote['q']}}&rdquo;
   <footer>&mdash;{{quote['a']}}</footer>
 </blockquote>
-{% for morning_entry, evening_entry in entries %} {% if morning_entry %}
-<h3>{{morning_entry.date}}</h3>
-{% else %}
-<h3>{{evening_entry.date}}</h3>
-{% endif %}
-<h4>Morning</h4>
-{% if morning_entry != None %}
-
-<ul>
-  Gratitude: {% for gratitude in morning_entry.gratitudes %}
-  <li>{{gratitude.entry}}: {{gratitude.reason}}</li>
-  {% endfor %}
-</ul>
-<p>Hours slept: {{morning_entry.hrs_sleep}}</p>
-<p>Quality of sleep: {{morning_entry.qual_sleep}}</p>
-<p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
-<p>Intention/Goal: {{morning_entry.goal}}</p>
-<p>Jornal Entry: {{morning_entry.journal_entry}}</p>
-{% else %}
-<a href="/add_missing_am_entry?date={{evening_entry.date}}">add entry</a>
-{% endif %}
-<h4>Evening</h4>
-{% if evening_entry %}
-
-<p>Activity Level: {{evening_entry.activity_level}}</p>
-<p>Goal Completed: {{evening_entry.goal_completed}}</p>
-<p>Overall Rating for Day: {{evening_entry.qual_day}}</p>
-<ul>
-  Emotions: {% for emotion_entry in evening_entry.emotion_entries %}
-  <li>{{emotion_entry.emotion.emotion}}</li>
-  {% endfor %}
-</ul>
-<p>Journal Entry: {{evening_entry.journal_entry}}</p>
-{% else %}
-<a href="/add_missing_pm_entry?date={{morning_entry.date}}">add entry</a>
+<div class="row">
+  {% for morning_entry, evening_entry in entries %} {% if morning_entry %}
+  <h3>{{morning_entry.date}}</h3>
+  {% else %}
+  <h3>{{evening_entry.date}}</h3>
+  {% endif %}
+  <h4>Morning</h4>
+  {% if morning_entry != None %}
+  <ul>
+    Gratitude: {% for gratitude in morning_entry.gratitudes %}
+    <li>{{gratitude.entry}}: {{gratitude.reason}}</li>
+    {% endfor %}
+  </ul>
+  <div class="col">
+    <p>Hours slept: {{morning_entry.hrs_sleep}}</p>
+  </div>
+  <div class="col">
+    <p>Quality of sleep: {{morning_entry.qual_sleep}}</p>
+  </div>
+  <div class="col">
+    <p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
+  </div>
+  <p>Intention/Goal: {{morning_entry.goal}}</p>
+  <p>Jornal Entry: {{morning_entry.journal_entry}}</p>
+  {% else %}
+  <a href="/add_missing_am_entry?date={{evening_entry.date}}">add entry</a>
+  {% endif %}
+  <h4>Evening</h4>
+  {% if evening_entry %}
+  <div class="col">
+    <p>Activity Level: {{evening_entry.activity_level}}</p>
+  </div>
+  <div class="col">
+    <p>Goal Completed: {{evening_entry.goal_completed}}</p>
+  </div>
+  <div class="col">
+    <p>Overall Rating for Day: {{evening_entry.qual_day}}</p>
+  </div>
+  <ul>
+    Emotions: {% for emotion_entry in evening_entry.emotion_entries %}
+    <li>{{emotion_entry.emotion.emotion}}</li>
+    {% endfor %}
+  </ul>
+  <p>Journal Entry: {{evening_entry.journal_entry}}</p>
+  {% else %}
+  <a href="/add_missing_pm_entry?date={{morning_entry.date}}">add entry</a>
+</div>
 {% endif %} {% endfor %} {% endblock %}
