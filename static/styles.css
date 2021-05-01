@@ -1,6 +1,27 @@
+#login-form,
 #sign-up-form,
 #new-am-entry,
 #new-pm-entry {
   display: flex;
   flex-direction: column;
+}
+
+.demo-1 {
+  background: no-repeat center/cover url("jan-kahanek-fVUl6kzIvLg-unsplash.jpg");
+  height: 100vh;
+}
+
+.test {
+  display: flex;
+  position: relative;
+}
+
+.homepage-quote {
+  text-align: center;
+}
+
+.img-fluid {
+  display: flex;
+  position: absolute;
+  /* z-index: 0; */
 }

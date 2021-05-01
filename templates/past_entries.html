@@ -3,9 +3,48 @@
   &ldquo;{{quote['q']}}&rdquo;
   <footer>&mdash;{{quote['a']}}</footer>
 </blockquote>
+{% for morning_entry, evening_entry in entries %} 
+<div class="row">
+  <div class="card-body"><h5 class="card-title"></h5>{% if morning_entry %}
+    <div class="card mb-3">
+      <h3>{{morning_entry.date.strftime('%B %d, %Y')}}</h3>
+      {% else %}
+      <h3>{{evening_entry.date.strftime('%B %d, %Y')}}</h3>
+      {% endif %}
+      </h5>
+      <p class="card-text"><h4>Morning</h4>
+        {% if morning_entry != None %}
+        <ul>
+          Gratitude: {% for gratitude in morning_entry.gratitudes %}
+          <li>{{gratitude.entry}}: {{gratitude.reason}}</li>
+          {% endfor %}
+        </ul>
+        <div class="col-4">
+          <p>Hours slept: {{morning_entry.hrs_sleep}}</p>
+        </div>
+        <div class="col-4">
+          <p>Quality of sleep: {{morning_entry.qual_sleep}}</p>
+        </div>
+        <div class="col-4">
+          <p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
+        </div>
+        <p>Intention/Goal: {{morning_entry.goal}}</p>
+        <p>Jornal Entry: {{morning_entry.journal_entry}}</p>
+        {% else %}
+        <a href="/add_missing_am_entry?date={{evening_entry.date}}">add entry</a>
+        {% endif %}
+      This is a wider card with supporting text below as a natural lead-in to
+      additional content. This content is a little bit longer.
+      </p>
+      <p class="card-text">
+      <small class="text-muted"><a type="button" data-toggle="popover" title="Popover title" data-content="And here's some amazing content. It's very engaging. Right?">edit</a></small>
+      </p>
+    </div>
+  </div>
+</div>{% endfor %}
 <div class="row">
   {% for morning_entry, evening_entry in entries %} {% if morning_entry %}
-  <h3>{{morning_entry.date}}</h3>
+  <h3>{{morning_entry.date.strftime('%B %d, %Y')}}</h3>
   {% else %}
   <h3>{{evening_entry.date}}</h3>
   {% endif %}

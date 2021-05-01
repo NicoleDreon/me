@@ -5,7 +5,13 @@ body%}
   {# id like to default to the current date and have option to change #}
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
-  <input type="date" id="date" name="date" required />
+  <input
+    type="date"
+    id="date"
+    name="date"
+    default="{datetime.today()}"
+    required
+  />
   <div>
     <label for="gratitude">Three things I am grateful for and why</label>
     <ol>

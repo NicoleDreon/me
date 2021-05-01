@@ -1,9 +1,156 @@
 {% extends 'base.html' %}{% block head %} {%endblock%} {% block body %}
-<form action="/login" id="login-form" method="POST">
-  <input type="text" name="email" id="email" placeholder="email" />
-  <input type="password" name="password" id="password" placeholder="password" />
-  <button>Submit</button>
-</form>
+<!-- <div class="row" id="test">
+  <div class="col-6" id="homepage-description">
+    <p>Mindful Everyday</p>
+  </div>
 
-<p>Not a member, <a href="/sign_up">sign up</a>.</p>
-{{ quote['q'] }} {{ quote['a'] }} {% endblock %}
+  <div class="col-6">
+    <form action="/login" id="login-form" method="POST">
+      <input type="text" name="email" id="email" placeholder="email" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        placeholder="password"
+      />
+      <button>Submit</button>
+    </form>
+
+    <p>
+      Not a member,
+      <a
+        type="button"
+        data-toggle="modal"
+        data-target="#exampleModal"
+        href="/sign_up"
+        >sign up</a
+      >.
+    </p>
+  </div>
+</div>
+<p class="homepage-quote">{{ quote['q'] }} {{ quote['a'] }}</p> -->
+<!-- <img
+  src="/static/jan-kahanek-fVUl6kzIvLg-unsplash.jpg"
+  alt=""
+  class="img-fluid"
+  alt="Responsive image"
+/> -->
+
+<section
+  class="demo-1 container-fluid d-flex justify-content-center align-items-center"
+>
+  <div class="row">
+    <!-- <div class="column"> -->
+    <!-- <p class="display-4 mx-5 text-light"></p> -->
+    <!-- <div class="row" id="test"> -->
+    <div class="col" id="homepage-description">
+      <p>Mindful Everyday</p>
+    </div>
+
+    <div class="col">
+      <form action="/login" id="login-form" method="POST">
+        <input type="text" name="email" id="email" placeholder="email" />
+        <input
+          type="password"
+          name="password"
+          id="password"
+          placeholder="password"
+        />
+        <button>Login</button>
+      </form>
+
+      <p>
+        Not a member,
+        <a
+          type="button"
+          data-toggle="modal"
+          data-target="#exampleModal"
+          href="/sign_up"
+          >sign up</a
+        >.
+      </p>
+    </div>
+    <!-- </div> -->
+    <!-- </div> -->
+  </div>
+  <div class="row">
+    <blockquote>
+      &ldquo;{{quote['q']}}&rdquo;
+      <footer>&mdash;{{quote['a']}}</footer>
+    </blockquote>
+  </div>
+</section>
+<!-- Modal -->
+
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create an Account</h5>
+        <button
+          type="button"
+          class="close"
+          data-dismiss="modal"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="/profile" id="sign-up-form" method="POST">
+          <label for="fname">First Name</label>
+          <input type="text" id="fname" name="fname" required />
+          <label for="lname">Last Name</label>
+          <input type="text" id="lname" name="lname" />
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required />
+          <label for="phone">Phone Number</label>
+          <input
+            type="tel"
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+            id="phone"
+            name="phone"
+          />
+          <label for="dob">Birthday</label>
+          <input type="date" id="dob" name="dob" />
+          <div>
+            <label>Gender:</label>
+            <input type="radio" id="male" name="gender" value="male" />
+
+            <label for="male">Male</label>
+
+            <input type="radio" id="female" name="gender" value="female" />
+            <label for="female">Female</label>
+
+            <input
+              type="radio"
+              id="nonbianary"
+              name="gender"
+              value="nonbianary"
+            />
+            <label for="nonbianary">Nonbianary</label>
+          </div>
+
+          <label for="password" name="password">Password</label>
+          <input type="password" id="password" name="password" required />
+          <button>Submit</button>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+          Close
+        </button>
+        <button type="button" class="btn btn-primary">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

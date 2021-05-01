@@ -30,6 +30,12 @@ def about():
 
     return render_template('about.html')
 
+@app.route('/contact')
+def contact():
+    """View contact page."""
+
+    return render_template('contact.html')
+
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     """Log in."""

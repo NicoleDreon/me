@@ -1,7 +1,16 @@
 "use strict";
 
+// Chart.defaults.scales.linear.min = 0;
+// Chart.defaults.scales.linear.max ÷= 10;
+
 const options = {
   responsive: true,
+  // scales: {
+  //   y: {
+  //     suggestedMin: 0,
+  //     suggestedMax: 10,
+  //   },
+  // },
 };
 
 let ctx = $("#lineChart").get(0).getContext("2d");
