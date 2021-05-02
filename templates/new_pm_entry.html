@@ -4,7 +4,14 @@ body%}
 <form action="/handle_new_pm_entry" id="new-pm-entry" method="POST">
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
-  <input type="date" id="date" name="date" required />
+  <input
+    type="date"
+    id="date"
+    name="date"
+    value="{{today}}"
+    max="{{today}}"
+    required
+  />
   <div>
     <label for="activity-level">How active were you today?</label>
     <input type="radio" id="activity-level-1" name="activity-level" value="1" />

@@ -174,10 +174,11 @@ def new_am_entry():
     """Create a new morning entry."""
     
     if 'user_id' in session:
+        today = datetime.today().strftime('%Y-%m-%d')
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
     
-        return render_template('new_am_entry.html')
+        return render_template('new_am_entry.html', today=today)
    
     else:
         return redirect('/')   
@@ -187,10 +188,11 @@ def new_pm_route():
     """Create a new evening entry."""
 
     if 'user_id' in session:
+        today = datetime.today().strftime('%Y-%m-%d')
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
 
-        return render_template('new_pm_entry.html')
+        return render_template('new_pm_entry.html', today=today)
 
     else:
         return redirect('/')
