@@ -1,5 +1,5 @@
 {% extends 'base.html' %}{% block head %} {% endblock %} {% block body %}
-<blockquote>
+<blockquote class="quote">
   &ldquo;{{quote['q']}}&rdquo;
   <footer>&mdash;{{quote['a']}}</footer>
 </blockquote>
@@ -19,6 +19,7 @@
           <li>{{gratitude.entry}}: {{gratitude.reason}}</li>
           {% endfor %}
         </ul>
+        <div class="row">
         <div class="col-4">
           <p>Hours slept: {{morning_entry.hrs_sleep}}</p>
         </div>
@@ -27,7 +28,7 @@
         </div>
         <div class="col-4">
           <p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
-        </div>
+        </div></div>
         <p>Intention/Goal: {{morning_entry.goal}}</p>
         <p>Jornal Entry: {{morning_entry.journal_entry}}</p>
         {% else %}
