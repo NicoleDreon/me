@@ -114,12 +114,13 @@ def past_entries():
 
     if 'user_id' in session:
 
+        today = datetime.today().strftime('%Y-%m-%d')
         quote = zen_quotes.get_quote()
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
         entries = crud.get_entries(user_id)
         
-        return render_template('past_entries.html', entries=entries, quote=quote)
+        return render_template('past_entries.html', entries=entries, quote=quote, today=today)
 
     else:
         return render_template('homepage.html')
