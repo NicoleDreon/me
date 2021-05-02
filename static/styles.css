@@ -11,17 +11,10 @@
   height: 100vh;
 }
 
-.test {
-  display: flex;
-  position: relative;
-}
-
 .homepage-quote {
   text-align: center;
 }
 
-.img-fluid {
-  display: flex;
-  position: absolute;
-  /* z-index: 0; */
+.quote {
+  text-align: center;
 }
