@@ -6,6 +6,18 @@
   flex-direction: column;
 }
 
+.home-height {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  text-align: center;
+}
+/* .navbar-brand {
+  color: red;
+  display: flex;
+  justify-content: space-between;
+} */
+
 .demo-1 {
   background: no-repeat center/cover url("jan-kahanek-fVUl6kzIvLg-unsplash.jpg");
   height: 100vh;
