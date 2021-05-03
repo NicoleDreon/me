@@ -7,16 +7,28 @@
 }
 
 .home-height {
-  height: 80vh;
+  height: 75vh;
   display: flex;
   align-items: center;
+  justify-content: center;
+}
+
+.home-height p {
   text-align: center;
+}
+
+#login-form {
+  width: 300px;
+  margin: 0 auto;
 }
 /* .navbar-brand {
   color: red;
   display: flex;
   justify-content: space-between;
 } */
+.quote {
+  text-align: center;
+}
 
 .demo-1 {
   background: no-repeat center/cover url("jan-kahanek-fVUl6kzIvLg-unsplash.jpg");
@@ -30,3 +42,19 @@
 .quote {
   text-align: center;
 }
+
+/* styles for past_entries */
+
+.card-body {
+  margin: 50px;
+  border: 2px dashed grey;
+}
+.card-title {
+  padding: 0;
+}
+
+/* .card{
+  padding: 20px;
+  margin: 0px;
+  
+} */
