@@ -34,14 +34,18 @@
         <div class="collapse navbar-collapse" id="navbarText">
           {% if 'user_id' in session %}
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link" href="/new_am_entry" data-toggle="modal"
-              data-target="#amModal"
-                >New Morning Entry</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="/new_pm_entry" data-toggle="modal"
-            data-target="#pmModal">New Evening Entry</a>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                New Entry
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="/new_am_entry" data-toggle="modal"
+                data-target="#amModal">Morning</a>
+                <a class="dropdown-item" href="/new_pm_entry" data-toggle="modal"
+                data-target="#pmModal">Evening</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Something else here</a>
+              </div>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/profile">View Profile</a>
