@@ -33,7 +33,7 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarText">
           {% if 'user_id' in session %}
-          <ul class="navbar-nav md-auto">
+          <ul class="navbar-nav mr-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 New Entry
@@ -250,7 +250,7 @@
   </div>
 </div>
           {% else %}
-          <ul class="navbar-nav md-auto">
+          <ul class="navbar-nav ml-auto">
             <li class="nav-item">
               <a class="nav-link" href="/about">About</a>
             </li>
@@ -262,12 +262,12 @@
         </div>
       </nav>
   </div>
-      <div>
+      <!-- <div>
         {% with messages = get_flashed_messages() %} {% if messages %} {% for
         message in messages %}
         <p class="alert alert-primary" role="alert">{{ message }}</p>
         {% endfor %} {% endif %} {% endwith %}
-      </div>
+      </div> -->
       {% block body %}{% endblock %}
       <script
         src="https://code.jquery.com/jquery-3.6.0.js"

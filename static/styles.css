@@ -17,6 +17,12 @@
   text-align: center;
 }
 
+#alert {
+  background-color: cadetblue;
+  width: 300px;
+  margin: 0 auto;
+  padding: 0;
+}
 #login-form {
   width: 300px;
   margin: 0 auto;
@@ -36,10 +42,6 @@
 }
 
 .homepage-quote {
-  text-align: center;
-}
-
-.quote {
   text-align: center;
 }
 
