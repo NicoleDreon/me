@@ -1,11 +1,35 @@
 {% extends 'base.html' %}{% block body %}
-<p>Welcome, {{session['fname']}}!</p>
-<p>First Name: {{fname}}</p>
-<p>Last Name: {{lname}}</p>
-<p>Email: {{email}}</p>
-<p>Phone Number: {{phone}}</p>
-<p>Password: {{password}}</p>
-<p>Birthday: {{dob}}</p>
-<p>Gender: {{gender}}</p>
+<div class="card">
+  <div class="card-body">
+    <div class="row">
+      <p>{{fname}} {{lname}}</p>
+    </div>
 
+    <!-- <div class="row">
+      <div class="col">
+        <p>First Name: {{fname}}</p>
+      </div>
+      <div class="col">
+        <p>Last Name: {{lname}}</p>
+      </div> -->
+    <!-- </div> -->
+    <div class="row">
+      <div class="col">
+        <p>Birthday: {{dob}}</p>
+      </div>
+      <div class="col">
+        <p>Gender: {{gender}}</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col">
+        <p>Email: {{email}}</p>
+      </div>
+      <div class="col">
+        <p>Phone Number: {{phone}}</p>
+      </div>
+    </div>
+    <p>Password: {% for letter in password %} * {% endfor %}</p>
+  </div>
+</div>
 {% endblock%}

@@ -74,6 +74,7 @@ def profile():
         user_id = session.get('user_id')
         user = crud.get_user(user_id)
         fname = user.fname
+        dob = user.dob.strftime('%B %d, %Y')
         # dry code => user = crud.get_user(session.get('user_id'))
         return render_template('profile.html', 
                                 fname=user.fname,
@@ -81,7 +82,7 @@ def profile():
                                 email=user.email,
                                 phone=user.phone,
                                 password=user.password,
-                                dob=user.dob,
+                                dob=dob,
                                 gender=user.gender)
         
     else:    
