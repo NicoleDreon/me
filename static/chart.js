@@ -5,12 +5,6 @@
 
 const options = {
   responsive: true,
-  // scales: {
-  //   y: {
-  //     suggestedMin: 0,
-  //     suggestedMax: 10,
-  //   },
-  // },
 };
 
 let ctx = $("#lineChart").get(0).getContext("2d");
