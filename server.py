@@ -139,8 +139,7 @@ def add_new_am_entry():
     journal_entry = request.form.get('journal-entry')
     entries = request.form.getlist('gratitude')
     reasons = request.form.getlist('gratitude-reason')
-    print(date)
-    print('\n\n\n\n\n\n')
+   
     if crud.get_am_entry_by_date(date):
         flash('Morning entry for this day alreay exists')
         return redirect('/new_am_entry')
