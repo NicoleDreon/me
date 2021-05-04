@@ -84,6 +84,9 @@
       </div>
       <div class="modal-body">
         <form action="/handle_new_am_entry" id="new-am-entry" method="POST">
+          <div>
+            <p class="alert" id="alert" role="alert" style="display: none">Morning entry for this date already exists.</p>
+          </div>
           <label for="date">Date</label>
           <input
             type="date"
@@ -93,6 +96,13 @@
             max="{{today}}"
             required
           />
+          <script>
+            const alertMessage = document.querySelector('#alert')
+            const dateInput = document.querySelector('#date')
+            dateInput.addEventListener('change', e =>{
+              fetch(`/check_am_date?date=${dateInput.value}`, {method:'get'}).then(results=>(results.json())).then(res=>{alertMessage.style.display=res.hasDate?'block':'None'})
+            })
+          </script>
           <div>
             <label for="gratitude">Three things I am grateful for and why</label>
             <ol>
@@ -174,6 +184,12 @@
         >
           <span aria-hidden="true">&times;</span>
         </button>
+      </div>
+      <div>
+        {% with messages = get_flashed_messages() %} {% if messages %} {% for
+        message in messages %}
+        <p class="alert" id="alert" role="alert">{{ message }}</p>
+        {% endfor %} {% endif %} {% endwith %}
       </div>
       <div class="modal-body">
         <form action="/handle_new_pm_entry" id="new-pm-entry" method="POST">

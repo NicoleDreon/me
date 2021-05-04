@@ -139,7 +139,8 @@ def add_new_am_entry():
     journal_entry = request.form.get('journal-entry')
     entries = request.form.getlist('gratitude')
     reasons = request.form.getlist('gratitude-reason')
-
+    print(date)
+    print('\n\n\n\n\n\n')
     if crud.get_am_entry_by_date(date):
         flash('Morning entry for this day alreay exists')
         return redirect('/new_am_entry')
@@ -149,6 +150,14 @@ def add_new_am_entry():
         new_gratitude = crud.add_am_entries_gratitudes(new_am_entry.am_entry_id, entries, reasons)
 
         return redirect('/past_entries')
+
+@app.route('/check_am_date')
+def check_am_date():
+    """Check date of am entries."""
+    
+    dates = crud.get_am_entry_by_date(request.args.get('date'))
+
+    return {'hasDate': dates != None}
 
 
 @app.route('/handle_new_pm_entry', methods=['POST'])
@@ -163,7 +172,7 @@ def add_new_pm_entry():
 
     if crud.get_pm_entry_by_date(date):
         flash('Evening entry for this day alreay exists')
-        return redirect('/new_pm_entry')
+        return redirect('/past_entries')
 
     else:
         new_pm_entry = crud.add_pm_entry(session['user_id'], date, activity_level, qual_day, goal_completed, journal_entry)
