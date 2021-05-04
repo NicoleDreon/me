@@ -17,9 +17,15 @@
   text-align: center;
 }
 
+#signin-button-flash-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 #alert {
   background-color: cadetblue;
-  width: 300px;
+  display: inline-block;
   margin: 0 auto;
   padding: 0;
 }
@@ -79,12 +85,14 @@
   border-radius: 40%;
 }
 
+#login-button,
 .submit-button {
   width: 100px;
   border-radius: 5px;
   float: center;
 }
 
+#login-form input,
 .modal-body input,
 .modal-body textarea {
   margin-bottom: 10px;
@@ -99,15 +107,18 @@
   display: flex;
   flex-direction: column;
 }
+
 .modal-body input[type="radio"] {
   box-shadow: none;
   height: auto;
   color: greenyellow;
 }
+
+#login-form input:focus,
 .modal-body input:focus,
 .modal-body textarea:focus {
   outline: none;
-  border: 1px greenyellow solid;
+  border: 2px greenyellow solid;
 }
 .close:hover,
 .submit-button:hover {

@@ -17,13 +17,14 @@
           id="password"
           placeholder="password"
         />
-        <div>
+        <div id="signin-button-flash-container">
           {% with messages = get_flashed_messages() %} {% if messages %} {% for
           message in messages %}
           <p class="alert" id="alert" role="alert">{{ message }}</p>
           {% endfor %} {% endif %} {% endwith %}
+
+          <button id="login-button">Login</button>
         </div>
-        <button>Login</button>
       </form>
 
       <p>
