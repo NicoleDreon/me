@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.navbar-nav {
+  margin-left: auto;
+}
+
 .home-height {
   height: 75vh;
   display: flex;
