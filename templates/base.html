@@ -12,15 +12,16 @@
       integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
       crossorigin="anonymous"
     />
-    <link rel="preconnect" href="https://fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
-    rel="stylesheet"
-    href="../static/styles.css"/>
+      href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../static/styles.css" />
     {% block head %} {%endblock%}
   </head>
   <body>
-    <div class="continer-fluid">
+    <class class="continer-fluid">
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="/">Mindful Everyday</a>
         <button
@@ -38,14 +39,32 @@
           {% if 'user_id' in session %}
           <ul class="navbar-nav">
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <a
+                class="nav-link dropdown-toggle"
+                href="#"
+                id="navbarDropdown"
+                role="button"
+                data-toggle="dropdown"
+                aria-haspopup="true"
+                aria-expanded="false"
+              >
                 New Entry
               </a>
               <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="/new_am_entry" data-toggle="modal"
-                data-target="#amModal">Morning</a>
-                <a class="dropdown-item" href="/new_pm_entry" data-toggle="modal"
-                data-target="#pmModal">Evening</a>
+                <a
+                  class="dropdown-item"
+                  href="/new_am_entry"
+                  data-toggle="modal"
+                  data-target="#amModal"
+                  >Morning</a
+                >
+                <a
+                  class="dropdown-item"
+                  href="/new_pm_entry"
+                  data-toggle="modal"
+                  data-target="#pmModal"
+                  >Evening</a
+                >
               </div>
             </li>
             <li class="nav-item">
@@ -64,89 +83,151 @@
               <a class="nav-link" href="/logout">Logout</a>
             </li>
           </ul>
-<div
-  class="modal fade"
-  id="amModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="amModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="amModalLabel">New Morning Entry</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form action="/handle_new_am_entry" id="new-am-entry" method="POST">
-          <div>
-            <p class="alert" id="alert" role="alert" style="display: none">Morning entry for this date already exists.</p>
-          </div>
-          <label for="date">Date</label>
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value="{{today}}"
-            max="{{today}}"
-            required
-          />
-          <script>
-            const alertMessage = document.querySelector('#alert')
-            const dateInput = document.querySelector('#date')
-            dateInput.addEventListener('change', e =>{
-              fetch(`/check_am_date?date=${dateInput.value}`, {method:'get'}).then(results=>(results.json())).then(res=>{alertMessage.style.display=res.hasDate?'block':'None'})
-            })
-          </script>
-          <div>
-            <label for="gratitude">Three things I am grateful for and why</label>
-            <ol>
-              <li>
-                <input type="text" id="gratitude1" name="gratitude" /><input
-                  type="text"
-                  id="gratitude-reason1"
-                  name="gratitude-reason"
-                  placeholder="because"
-                />
-              </li>
-              <li>
-                <input type="text" id="gratitude2" name="gratitude" /><input
-                  type="text"
-                  id="gratitude-reson2"
-                  name="gratitude-reason"
-                />
-              </li>
-              <li>
-                <input type="text" id="gratitude3" name="gratitude" /><input
-                  type="text"
-                  id="gratitude-reason3"
-                  name="gratitude-reason"
-                />
-              </li>
-            </ol>
-          </div>
-          <label for="hrs-sleep">I slept <input type="number" id="hrs-sleep" name="hrs-sleep" min="0" max="24" /> hours last night.</label>
-          <label for="snooze">This morning I pressed snooze <input type="number" id="snooze" name="snooze" min="0" max="10" /> times.</label>
-          <div>
-            
-              <label for="qual-sleep">The quality of my sleep was <select name="qual-sleep" id="qual-sleep" default='none'>
-                <option value="none"></option><option name="qual-sleep" value="1">horrible</option>
-                <option name="qual-sleep" value="2">bad</option>
-                <option name="qual-sleep" value="3">average</option>
-                <option name="qual-sleep" value="4">good</option>
-                <option name="qual-sleep" value="5">fantastic</option>
-              </select></label>
-              
-            <!-- <div> -->
-              <!-- <input type="radio" id="qual-sleep-1" name="qual-sleep" value="1" />
+          <div
+            class="modal fade"
+            id="amModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="amModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="amModalLabel">
+                    New Morning Entry
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form
+                    action="/handle_new_am_entry"
+                    id="new-am-entry"
+                    method="POST"
+                  >
+                    <div>
+                      <p
+                        class="alert"
+                        id="alert"
+                        role="alert"
+                        style="display: none"
+                      >
+                        Morning entry for this date already exists.
+                      </p>
+                    </div>
+                    <label for="date">Date</label>
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      value="{{today}}"
+                      max="{{today}}"
+                      required
+                    />
+                    <script>
+                      const alertMessage = document.querySelector("#alert");
+                      const dateInput = document.querySelector("#date");
+                      dateInput.addEventListener("change", (e) => {
+                        fetch(`/check_am_date?date=${dateInput.value}`, {
+                          method: "get",
+                        })
+                          .then((results) => results.json())
+                          .then((res) => {
+                            alertMessage.style.display = res.hasDate
+                              ? "block"
+                              : "None";
+                          });
+                      });
+                    </script>
+                    <div>
+                      <label for="gratitude"
+                        >Three things I am grateful for and why</label
+                      >
+                      <ol>
+                        <li>
+                          <input
+                            type="text"
+                            id="gratitude1"
+                            name="gratitude"
+                          /><input
+                            type="text"
+                            id="gratitude-reason1"
+                            name="gratitude-reason"
+                            placeholder="because"
+                          />
+                        </li>
+                        <li>
+                          <input
+                            type="text"
+                            id="gratitude2"
+                            name="gratitude"
+                          /><input
+                            type="text"
+                            id="gratitude-reson2"
+                            name="gratitude-reason"
+                          />
+                        </li>
+                        <li>
+                          <input
+                            type="text"
+                            id="gratitude3"
+                            name="gratitude"
+                          /><input
+                            type="text"
+                            id="gratitude-reason3"
+                            name="gratitude-reason"
+                          />
+                        </li>
+                      </ol>
+                    </div>
+                    <label for="hrs-sleep"
+                      >I slept
+                      <input
+                        type="number"
+                        id="hrs-sleep"
+                        name="hrs-sleep"
+                        min="0"
+                        max="24"
+                      />
+                      hours last night.</label
+                    >
+                    <label for="snooze"
+                      >This morning I pressed snooze
+                      <input
+                        type="number"
+                        id="snooze"
+                        name="snooze"
+                        min="0"
+                        max="10"
+                      />
+                      times.</label
+                    >
+                    <div>
+                      <label for="qual-sleep"
+                        >The quality of my sleep was
+                        <select
+                          name="qual-sleep"
+                          id="qual-sleep"
+                          default="none"
+                        >
+                          <option value="none"></option>
+                          <option name="qual-sleep" value="1">horrible</option>
+                          <option name="qual-sleep" value="2">bad</option>
+                          <option name="qual-sleep" value="3">average</option>
+                          <option name="qual-sleep" value="4">good</option>
+                          <option name="qual-sleep" value="5">fantastic</option>
+                        </select></label
+                      >
+
+                      <!-- <div> -->
+                      <!-- <input type="radio" id="qual-sleep-1" name="qual-sleep" value="1" />
             
               <label for="qual-sleep-1">Horrible</label>
               <input type="radio" id="qual-sleep-2" name="qual-sleep" value="2" />
@@ -158,73 +239,95 @@
               <input type="radio" id="qual-sleep-5"  name="qual-sleep" value="5" />
               <label for="qual-sleep-5">Fantastic</label>
             </div> -->
-          </div>  
-          <label for="goal"
-            >One goal or intention I'd feel good about accomplishing today is</label
+                    </div>
+                    <label for="goal"
+                      >One goal or intention I'd feel good about accomplishing
+                      today is</label
+                    >
+                    <input type="text" id="goal" name="goal" />
+                    <label for="journal-entry">My morning thoughts</label>
+                    <textarea
+                      name="journal-entry"
+                      id="journal-entry"
+                      cols="30"
+                      rows="10"
+                    ></textarea>
+                    <button class="entry-submit-button">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div
+            class="modal fade"
+            id="pmModal"
+            tabindex="-1"
+            role="dialog"
+            aria-labelledby="pmModalLabel"
+            aria-hidden="true"
           >
-          <input type="text" id="goal" name="goal" />
-          <label for="journal-entry">My morning thoughts</label>
-          <textarea
-            name="journal-entry"
-            id="journal-entry"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <button class="entry-submit-button">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<div
-  class="modal fade"
-  id="pmModal"
-  tabindex="-1"
-  role="dialog"
-  aria-labelledby="pmModalLabel"
-  aria-hidden="true"
->
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="pmModalLabel">New Evening Entry</h5>
-        <button
-          type="button"
-          class="close"
-          data-dismiss="modal"
-          aria-label="Close"
-        >
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div>
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <p class="alert" id="alert" role="alert">{{ message }}</p>
-        {% endfor %} {% endif %} {% endwith %}
-      </div>
-      <div class="modal-body">
-        <form action="/handle_new_pm_entry" id="new-pm-entry" method="POST">
-          <label for="date">Date</label>
-          {# set so it defaults to todays date #}
-          <input
-            type="date"
-            id="date"
-            name="date"
-            value="{{today}}"
-            max="{{today}}"
-            required
-          />
-          <div>
-            <label for="activity-level">I was <select name="activity-level" id="activity-level" default='none'>
-              <option value="none"></option><option name="activity-level" value="1">not</option>
-              <option name="activity-level" value="2">a little</option>
-              <option name="activity-level" value="3">moderately</option>
-              <option name="activity-level" value="4">vary</option>
-              <option name="activity-level" value="5">extermely</option>
-            </select> active today.</label>
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="pmModalLabel">
+                    New Evening Entry
+                  </h5>
+                  <button
+                    type="button"
+                    class="close"
+                    data-dismiss="modal"
+                    aria-label="Close"
+                  >
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div>
+                  {% with messages = get_flashed_messages() %} {% if messages %}
+                  {% for message in messages %}
+                  <p class="alert" id="alert" role="alert">{{ message }}</p>
+                  {% endfor %} {% endif %} {% endwith %}
+                </div>
+                <div class="modal-body">
+                  <form
+                    action="/handle_new_pm_entry"
+                    id="new-pm-entry"
+                    method="POST"
+                  >
+                    <label for="date">Date</label>
+                    {# set so it defaults to todays date #}
+                    <input
+                      type="date"
+                      id="date"
+                      name="date"
+                      value="{{today}}"
+                      max="{{today}}"
+                      required
+                    />
+                    <div>
+                      <label for="activity-level"
+                        >I was
+                        <select
+                          name="activity-level"
+                          id="activity-level"
+                          default="none"
+                        >
+                          <option value="none"></option>
+                          <option name="activity-level" value="1">not</option>
+                          <option name="activity-level" value="2">
+                            a little
+                          </option>
+                          <option name="activity-level" value="3">
+                            moderately
+                          </option>
+                          <option name="activity-level" value="4">vary</option>
+                          <option name="activity-level" value="5">
+                            extermely
+                          </option>
+                        </select>
+                        active today.</label
+                      >
 
-            <!-- <input type="radio" id="activity-level-1" name="activity-level" value="1" />
+                      <!-- <input type="radio" id="activity-level-1" name="activity-level" value="1" />
             <label for="activity-level-1">1</label>
             <input type="radio" id="activity-level-2" name="activity-level" value="2" />
             <label for="activity-level-2">2</label>
@@ -234,17 +337,22 @@
             <label for="activity-level-4">4</label>
             <input type="radio" id="activity-level-5" name="activity-level" value="5" />
             <label for="activity-level-5">5</label> -->
-          </div>
-          {# would like to show the goal the set that morning in the label prompt #}
-          <div>
-            <label for="qual-day">The overall quality of my day was <select name="qual-day" id="qual-day" default='none'>
-              <option value="none"></option><option name="qual-day" value="1">horrible</option>
-              <option name="qual-day" value="2">bad</option>
-              <option name="qual-day" value="3">average</option>
-              <option name="qual-day" value="4">good</option>
-              <option name="qual-day" value="5">fantastic</option>
-            </select></label>
-            <!-- <input type="radio" id="qual-day-1" name="qual-day" value="1" required />
+                    </div>
+                    {# would like to show the goal the set that morning in the
+                    label prompt #}
+                    <div>
+                      <label for="qual-day"
+                        >The overall quality of my day was
+                        <select name="qual-day" id="qual-day" default="none">
+                          <option value="none"></option>
+                          <option name="qual-day" value="1">horrible</option>
+                          <option name="qual-day" value="2">bad</option>
+                          <option name="qual-day" value="3">average</option>
+                          <option name="qual-day" value="4">good</option>
+                          <option name="qual-day" value="5">fantastic</option>
+                        </select></label
+                      >
+                      <!-- <input type="radio" id="qual-day-1" name="qual-day" value="1" required />
             <label for="qual-day-1">Horrible</label>
             <input type="radio" id="qual-day-2" name="qual-day" value="2" required />
             <label for="qual-day-2">Bad</label>
@@ -254,45 +362,54 @@
             <label for="qual-day-4">Good</label>
             <input type="radio" id="qual-day-5" name="qual-day" value="5" required />
             <label for="qual-day-5">Fantastic</label> -->
-          </div>
-          <div>
-            <label for="goal-completed"
-              >I <select name="goal-completed" id="goal-completed" default='none'>
-                <option value="none"></option><option name="goal-completed" value="1">did</option>
-                <option name="goal-completed" value="2">did not</option>
-              </select> complete my goal or intention for today.</label
-            >
-            <!-- <input type="radio" id="yes" name="goal-completed" value="1" />
+                    </div>
+                    <div>
+                      <label for="goal-completed"
+                        >I
+                        <select
+                          name="goal-completed"
+                          id="goal-completed"
+                          default="none"
+                        >
+                          <option value="none"></option>
+                          <option name="goal-completed" value="1">did</option>
+                          <option name="goal-completed" value="2">
+                            did not
+                          </option>
+                        </select>
+                        complete my goal or intention for today.</label
+                      >
+                      <!-- <input type="radio" id="yes" name="goal-completed" value="1" />
             <label for="yes">Yes</label>
             <input type="radio" id="no" name="goal-completed" value="0" />
             <label for="no">No</label> -->
+                    </div>
+
+                    <label>My top three emotions for the day were</label>
+                    <ol>
+                      <li>
+                        <input type="text" id="emotion" name="emotion" />
+                      </li>
+                      <li>
+                        <input type="text" id="emotion" name="emotion" />
+                      </li>
+                      <li>
+                        <input type="text" id="emotion" name="emotion" />
+                      </li>
+                    </ol>
+                    <label for="journal-entry">My evening thoughts</label>
+                    <textarea
+                      name="journal-entry"
+                      id="journal-entry"
+                      cols="30"
+                      rows="10"
+                    ></textarea>
+                    <button class="entry-submit-button">Submit</button>
+                  </form>
+                </div>
+              </div>
+            </div>
           </div>
-        
-          <label>My top three emotions for the day were</label>
-          <ol>
-            <li>
-              <input type="text" id="emotion" name="emotion" />
-            </li>
-            <li>
-              <input type="text" id="emotion" name="emotion" />
-            </li>
-            <li>
-              <input type="text" id="emotion" name="emotion" />
-            </li>
-          </ol>
-          <label for="journal-entry">My evening thoughts</label>
-          <textarea
-            name="journal-entry"
-            id="journal-entry"
-            cols="30"
-            rows="10"
-          ></textarea>
-          <button class="entry-submit-button">Submit</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
           {% else %}
           <ul class="navbar-nav">
             <li class="nav-item">
@@ -305,13 +422,6 @@
           {% endif %}
         </div>
       </nav>
-  </div>
-      <!-- <div>
-        {% with messages = get_flashed_messages() %} {% if messages %} {% for
-        message in messages %}
-        <p class="alert alert-primary" role="alert">{{ message }}</p>
-        {% endfor %} {% endif %} {% endwith %}
-      </div> -->
       {% block body %}{% endblock %}
       <script
         src="https://code.jquery.com/jquery-3.6.0.js"
@@ -320,6 +430,7 @@
       ></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-    </div>
+      <footer>&#169; Nicole Dreon Hackbright Academy</footer>
+    </class>
   </body>
 </html>
