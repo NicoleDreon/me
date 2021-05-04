@@ -45,18 +45,78 @@
   text-align: center;
 }
 
-/* styles for past_entries */
+.form-note {
+  color: rgb(177, 177, 177);
+}
 
-.card-body {
+.card-body,
+.modal-content {
   margin: 50px;
   border-radius: 20px;
   width: [object Object]px;
   height: [object Object]px;
-  background: #f8f8f8;
+  /* background: #f8f8f8; */
   border: solid #bdbdbd 1px;
+  /* border: solid limegreen 3px; */
   box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* .modal-header {
+  background: rgb(183, 183, 164);
+  border-radius: 15px 15px 0 0;
+} */
+
+.button-and-note-container {
+  display: flex;
+  flex-direction: column;
+  /* justify-content: center; */
+  align-items: center;
+}
+
+.close {
+  border-radius: 40%;
+}
+
+.submit-button {
+  width: 100px;
+  border-radius: 5px;
+  float: center;
+}
+
+.modal-body input,
+.modal-body textarea {
+  margin-bottom: 10px;
+  padding-left: 5px;
+  height: 30px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+  box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
+}
+
+.modal-body .form-radio-label-input-container {
+  display: flex;
+  flex-direction: column;
+}
+.modal-body input[type="radio"] {
+  box-shadow: none;
+  height: auto;
+  color: greenyellow;
+}
+.modal-body input:focus,
+.modal-body textarea:focus {
+  outline: none;
+  border: 1px greenyellow solid;
+}
+.close:hover,
+.submit-button:hover {
+  background-color: rgb(183, 183, 164);
+}
+
+.form-note {
+  color: rgb(177, 177, 177);
+  margin-top: 10px;
 }
 /* .card-title {
   padding: 0;

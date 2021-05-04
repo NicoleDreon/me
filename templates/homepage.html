@@ -3,6 +3,10 @@
   <div class="row home-height">
     <div class="col-xs-12 col-sm-6" id="homepage-description">
       <p>Mindful Everyday</p>
+      <p>
+        a daily journaling application with anylitics to help users better
+        understand self
+      </p>
     </div>
     <div class="col-xs-12 col-sm-6">
       <form action="/login" id="login-form" method="POST">
@@ -66,13 +70,26 @@
       <div class="modal-body">
         <!-- sign up form -->
         <form action="/profile" id="sign-up-form" method="POST">
-          <label for="fname">First Name*</label>
+          <label for="fname"
+            >First Name <span style="color: rgb(177, 177, 177)"> *</span></label
+          >
           <input type="text" id="fname" name="fname" required />
           <label for="lname">Last Name</label>
           <input type="text" id="lname" name="lname" />
-          <label for="email">Email Address*</label>
+          <label for="email"
+            >Email Address<span style="color: rgb(177, 177, 177)">
+              *</span
+            ></label
+          >
           <input type="email" id="email" name="email" required />
-          <label for="phone">Phone Number (###-###-####)</label>
+          <label for="phone"
+            >Phone Number
+            <sup
+              ><span style="color: rgb(177, 177, 177)">
+                (###-###-####)</span
+              ></sup
+            ></label
+          >
           <input
             type="tel"
             pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
@@ -81,36 +98,36 @@
           />
           <label for="dob">Birthday</label>
           <input type="date" id="dob" name="dob" />
-          <div>
-            <label>Gender:</label>
-            <input type="radio" id="male" name="gender" value="male" />
+          <div class="form-radio-label-input-container">
+            <label>Gender</label>
+            <div>
+              <input type="radio" id="male" name="gender" value="male" />
 
-            <label for="male">Male</label>
+              <label for="male">Male</label>
 
-            <input type="radio" id="female" name="gender" value="female" />
-            <label for="female">Female</label>
+              <input type="radio" id="female" name="gender" value="female" />
+              <label for="female">Female</label>
 
-            <input
-              type="radio"
-              id="nonbianary"
-              name="gender"
-              value="nonbianary"
-            />
-            <label for="nonbianary">Nonbianary</label>
+              <input
+                type="radio"
+                id="nonbianary"
+                name="gender"
+                value="nonbianary"
+              />
+              <label for="nonbianary">Nonbianary</label>
+            </div>
           </div>
 
-          <label for="password" name="password">Password*</label>
+          <label for="password" name="password"
+            >Password<span style="color: rgb(177, 177, 177)"> *</span></label
+          >
           <input type="password" id="password" name="password" required />
-          <button>Submit</button>
-          <p>* indicates a required field</p>
+          <div class="button-and-note-container">
+            <button class="submit-button">Submit</button>
+            <p class="form-note">* indicates a required field</p>
+          </div>
         </form>
       </div>
-      <!-- <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-          Close
-        </button>
-        <button type="button" class="btn btn-primary">Submit</button>
-      </div> -->
     </div>
   </div>
 </div>
