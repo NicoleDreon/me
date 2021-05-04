@@ -6,6 +6,10 @@
   flex-direction: column;
 }
 
+.navbar-brand {
+  margin-left: 10px;
+}
+
 .navbar-nav {
   margin-left: auto;
 }
@@ -181,6 +185,18 @@
   color: rgb(177, 177, 177);
   margin-top: 10px;
 }
+
+/* profile page */
+#welcome-message {
+  margin-left: 20px;
+  margin-top: 20px;
+}
+
+#profile-card {
+  width: 600px;
+  border: 20px;
+}
+
 /* .card-title {
   padding: 0;
   border: 1px greenyellow;
