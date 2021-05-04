@@ -37,7 +37,7 @@ $.get("/chart.json", (data) => {
           borderColor: "rgb(75, 192, 192)",
           pointBackgroundColor: "rgb(75, 192, 192)",
           fill: false,
-          tension: 0,
+          tension: 0.3,
         },
         {
           label: "Quality Sleep",
@@ -45,7 +45,7 @@ $.get("/chart.json", (data) => {
           borderColor: "rgb(75, 192, 192)",
           pointBackgroundColor: "rgb(75, 192, 192)",
           fill: false,
-          tension: 0,
+          tension: 0.3,
         },
         {
           label: "Snooze",
@@ -53,7 +53,7 @@ $.get("/chart.json", (data) => {
           borderColor: "rgb(75, 192, 192)",
           pointBackgroundColor: "rgb(75, 192, 192)",
           fill: false,
-          tension: 0,
+          tension: 0.3,
         },
         {
           label: "Activity Level",
@@ -61,7 +61,7 @@ $.get("/chart.json", (data) => {
           borderColor: "rgb(75, 192, 192)",
           pointBackgroundColor: "rgb(75, 192, 192)",
           fill: false,
-          tension: 0,
+          tension: 0.3,
         },
         {
           label: "Quality of Day",
@@ -69,7 +69,7 @@ $.get("/chart.json", (data) => {
           borderColor: "rgb(75, 192, 192)",
           pointBackgroundColor: "rgb(75, 192, 192)",
           fill: false,
-          tension: 0,
+          tension: 0.3,
         },
       ],
     },
