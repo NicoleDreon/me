@@ -1,6 +1,12 @@
 {% extends 'base.html' %}{% block head %}
 <link rel="stylesheet" href="/static/styles.css" />{% endblock %} {% block
 body%}
+<div>
+  {% with messages = get_flashed_messages() %} {% if messages %} {% for message
+  in messages %}
+  <p class="alert" id="alert" role="alert">{{ message }}</p>
+  {% endfor %} {% endif %} {% endwith %}
+</div>
 <form action="/handle_new_pm_entry" id="new-pm-entry" method="POST">
   <label for="date">Date</label>
   {# set so it defaults to todays date #}
