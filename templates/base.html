@@ -139,7 +139,7 @@
             
               <label for="qual-sleep">The quality of my sleep was <select name="qual-sleep" id="qual-sleep" default='none'>
                 <option value="none"></option><option name="qual-sleep" value="1">horrible</option>
-                <option name="qual-sleep" value="2">ok</option>
+                <option name="qual-sleep" value="2">bad</option>
                 <option name="qual-sleep" value="3">average</option>
                 <option name="qual-sleep" value="4">good</option>
                 <option name="qual-sleep" value="5">fantastic</option>
@@ -216,8 +216,15 @@
             required
           />
           <div>
-            <label for="activity-level">How active were you today?</label>
-            <input type="radio" id="activity-level-1" name="activity-level" value="1" />
+            <label for="activity-level">I was <select name="activity-level" id="activity-level" default='none'>
+              <option value="none"></option><option name="activity-level" value="1">not</option>
+              <option name="activity-level" value="2">a little</option>
+              <option name="activity-level" value="3">moderately</option>
+              <option name="activity-level" value="4">vary</option>
+              <option name="activity-level" value="5">extermely</option>
+            </select> active today.</label>
+
+            <!-- <input type="radio" id="activity-level-1" name="activity-level" value="1" />
             <label for="activity-level-1">1</label>
             <input type="radio" id="activity-level-2" name="activity-level" value="2" />
             <label for="activity-level-2">2</label>
@@ -226,33 +233,42 @@
             <input type="radio" id="activity-level-4" name="activity-level" value="4" />
             <label for="activity-level-4">4</label>
             <input type="radio" id="activity-level-5" name="activity-level" value="5" />
-            <label for="activity-level-5">5</label>
+            <label for="activity-level-5">5</label> -->
           </div>
           {# would like to show the goal the set that morning in the label prompt #}
           <div>
-            <label for="qual-day">Overall quality of your day?</label>
-            <input type="radio" id="qual-day-1" name="qual-day" value="1" required />
+            <label for="qual-day">The overall quality of my day was <select name="qual-day" id="qual-day" default='none'>
+              <option value="none"></option><option name="qual-day" value="1">horrible</option>
+              <option name="qual-day" value="2">bad</option>
+              <option name="qual-day" value="3">average</option>
+              <option name="qual-day" value="4">good</option>
+              <option name="qual-day" value="5">fantastic</option>
+            </select></label>
+            <!-- <input type="radio" id="qual-day-1" name="qual-day" value="1" required />
             <label for="qual-day-1">Horrible</label>
             <input type="radio" id="qual-day-2" name="qual-day" value="2" required />
-            <label for="qual-day-2">Ok</label>
+            <label for="qual-day-2">Bad</label>
             <input type="radio" id="qual-day-3" name="qual-day" value="3" required />
             <label for="qual-day-3">Average</label>
             <input type="radio" id="qual-day-4" name="qual-day" value="4" required />
             <label for="qual-day-4">Good</label>
             <input type="radio" id="qual-day-5" name="qual-day" value="5" required />
-            <label for="qual-day-5">Fantastic</label>
+            <label for="qual-day-5">Fantastic</label> -->
           </div>
           <div>
             <label for="goal-completed"
-              >Did you complete the goal you set this morning?</label
+              >I <select name="goal-completed" id="goal-completed" default='none'>
+                <option value="none"></option><option name="goal-completed" value="1">did</option>
+                <option name="goal-completed" value="2">did not</option>
+              </select> complete my goal or intention for today.</label
             >
-            <input type="radio" id="yes" name="goal-completed" value="1" />
+            <!-- <input type="radio" id="yes" name="goal-completed" value="1" />
             <label for="yes">Yes</label>
             <input type="radio" id="no" name="goal-completed" value="0" />
-            <label for="no">No</label>
+            <label for="no">No</label> -->
           </div>
         
-          <label>Top three emotions for the day</label>
+          <label>My top three emotions for the day were</label>
           <ol>
             <li>
               <input type="text" id="emotion" name="emotion" />
@@ -264,7 +280,7 @@
               <input type="text" id="emotion" name="emotion" />
             </li>
           </ol>
-          <label for="journal-entry">Evening Thoughts</label>
+          <label for="journal-entry">My evening thoughts</label>
           <textarea
             name="journal-entry"
             id="journal-entry"

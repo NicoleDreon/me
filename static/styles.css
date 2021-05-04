@@ -163,11 +163,11 @@
   flex-direction: column;
 }
 
-/* .modal-body input[type="radio"] {
+.modal-body input[type="radio"] {
   box-shadow: none;
   height: auto;
   color: greenyellow;
-} */
+}
 
 #login-form input:focus,
 .modal-body input:focus,
