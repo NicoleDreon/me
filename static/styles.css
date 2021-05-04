@@ -76,9 +76,31 @@
   display: flex;
   justify-content: space-between;
 } */
+
+#quote-container-past-entries {
+  background: no-repeat center/cover url("peaceful_background.jpg");
+  height: 300px;
+  z-index: -1;
+  padding: 40px 100px 0 100px;
+}
+
+/* #quote-container-past-entries-content {
+  margin: 0 100px 0 100px;
+} */
+
+#quote-container-past-entries p {
+  margin-left: 20px;
+}
+
 .quote {
   text-align: center;
   font-family: "Dancing Script", cursive;
+  font-size: 30px;
+}
+
+.past-entry-text {
+  overflow: scroll;
+  height: 120px;
 }
 
 .demo-1 {
