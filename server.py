@@ -140,15 +140,15 @@ def add_new_am_entry():
     entries = request.form.getlist('gratitude')
     reasons = request.form.getlist('gratitude-reason')
     
-    if crud.get_am_entry_by_date(date):
-        flash('Morning entry for this day alreay exists')
-        return redirect('/new_am_entry')
+    # if crud.get_am_entry_by_date(date):
+    #     flash('Morning entry for this day alreay exists')
+    #     return redirect('/new_am_entry')
 
-    else:
-        new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
-        new_gratitude = crud.add_am_entries_gratitudes(new_am_entry.am_entry_id, entries, reasons)
+    # else:
+    new_am_entry = crud.add_am_entry(session['user_id'], date, hrs_sleep, qual_sleep, snooze, goal, journal_entry)
+    new_gratitude = crud.add_am_entries_gratitudes(new_am_entry.am_entry_id, entries, reasons)
 
-        return redirect('/past_entries')
+    return redirect('/past_entries')
 
 @app.route('/check_am_date')
 def check_am_date():
