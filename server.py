@@ -74,7 +74,7 @@ def profile():
         user_id = session.get('user_id')
         user = crud.get_user(user_id)
         fname = user.fname
-        dob = user.dob.strftime('%B %d, %Y')
+        dob = user.dob
         # dry code => user = crud.get_user(session.get('user_id'))
         return render_template('profile.html', 
                                 fname=user.fname,
