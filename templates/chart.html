@@ -1,22 +1,24 @@
 {% extends 'base.html' %}{% block head %} {%endblock%} {% block body %}
-<div id="chart-heading-content">
-  <p>Welcome to the analytics of your past seven journal entries.</p>
-  <p>
-    This graph is to show the possible correlation between daily habits and
-    patterns with over all quality of day. The longer you journal the more
-    you'll be able to see trends. For example, maybe you'll notice that Mondays
-    are your most active day where as Thursdays you never seem to accomplish
-    your goal.
-  </p>
-  <p>
-    This tool is to inspire curiosity and to help you better understand
-    yourself.
-  </p>
-</div>
-<div class="chart">
-  <p>Click on keys to make the related line disappear and reappear.</p>
-  <canvas id="lineChart"></canvas>
-  <!-- <div id="lineLegend" class="chart-legend"></div> -->
+<div class="test">
+  <div id="chart-heading-content">
+    <p>Welcome to the analytics of your past seven journal entries.</p>
+    <p>
+      This graph is to show the possible correlation between daily habits and
+      patterns with over all quality of day. The longer you journal the more
+      you'll be able to see trends. For example, maybe you'll notice that
+      Mondays are your most active day where as Thursdays you never seem to
+      accomplish your goal.
+    </p>
+    <p>
+      This tool is to inspire curiosity and to help you better understand
+      yourself.
+    </p>
+  </div>
+  <div class="chart">
+    <p>Click on keys to make the related line disappear and reappear.</p>
+    <canvas id="lineChart"></canvas>
+    <!-- <div id="lineLegend" class="chart-legend"></div> -->
+  </div>
 </div>
 
 <script src="/static/chart.js"></script>

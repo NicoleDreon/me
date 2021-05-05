@@ -9,17 +9,18 @@
   </div>
 </div>
   {% for morning_entry, evening_entry in entries %} 
-<div class="row">
+<div class="row past-entries-card-container">
   <div class="card-body">
     <div>
-    <h5 class="card-title">{% if morning_entry %}
-    <div class="card mb-3">
-      <h3>{{morning_entry.date.strftime('%B %d, %Y')}}</h3>
-      {% else %}
-      <h3>{{evening_entry.date.strftime('%B %d, %Y')}}</h3>
-      {% endif %}
+      <h5 class="card-title">{% if morning_entry %}
+        <!-- <div class="card mb-3"> -->
+        <h3 class="time-of-day-title">{{morning_entry.date.strftime('%B %d, %Y')}}</h3>
+          {% else %}
+        <h3 class="time-of-day-title">{{evening_entry.date.strftime('%B %d, %Y')}}</h3>
+          {% endif %}
       </h5>
-      <p class="card-text"><h4>Morning</h4>
+      <div class="card-body-container">
+        <p class="card-text"><h4>Morning</h4>
         {% if morning_entry != None %}
         <ul>
           Gratitude: {% for gratitude in morning_entry.gratitudes %}
@@ -37,9 +38,10 @@
           <p>Number of times hitting snooze: {{morning_entry.snooze}}</p>
         </div></div>
         <p>Intention/Goal: {{morning_entry.goal}}</p>
-        <p class="past-entry-text">Jornal Entry: {{morning_entry.journal_entry}}</p>
+        <p>Jornal Entry: <p class="past-entry-text">{{morning_entry.journal_entry}}</p></p>
         {% else %}
-        <a href="/add_missing_am_entry?date={{evening_entry.date}}">add entry</a>
+        <p class="note">no entry</p>
+        <!-- <a href="/add_missing_am_entry?date={{evening_entry.date}}">add entry</a> -->
         {% endif %}
         <h4>Evening</h4>
         {% if evening_entry %}
@@ -59,9 +61,10 @@
           <li>{{emotion_entry.emotion.emotion}}</li>
           {% endfor %}
         </ul>
-        <p class="past-entry-text">Journal Entry: {{evening_entry.journal_entry}}</p>
+        <p>Journal Entry: <p class="past-entry-text">{{evening_entry.journal_entry}}</p></p>
         {% else %}
-        <a href="/add_missing_pm_entry?date={{morning_entry.date}}">add entry</a>
+        <p class="note">no entry</p>
+        <!-- <a href="/add_missing_pm_entry?date={{morning_entry.date}}">add entry</a> -->
       </p>{% endif %}
     </div>
   </div>

@@ -83,6 +83,13 @@
   z-index: -1;
   padding: 40px 100px 0 100px;
 }
+body {
+  background: no-repeat center/cover url("peaceful_background.jpg");
+}
+
+/* body.past_entries {
+  background: url("peaceful_background.jpg");
+} */
 
 /* #quote-container-past-entries-content {
   margin: 0 100px 0 100px;
@@ -98,9 +105,16 @@
   font-size: 30px;
 }
 
+.past-entries-card-container {
+  display: flex;
+  justify-content: center;
+}
 .past-entry-text {
   overflow: scroll;
-  height: 120px;
+  height: 125px;
+  border: 1px solid #d8d7d7;
+  border-radius: 5px;
+  padding: 5px;
 }
 
 .demo-1 {
@@ -112,7 +126,7 @@
   text-align: center;
 }
 
-.form-note {
+.note {
   color: rgb(177, 177, 177);
 }
 
@@ -122,12 +136,31 @@
   border-radius: 20px;
   width: [object Object]px;
   height: [object Object]px;
-  /* background: #f8f8f8; */
+  background: #f8f8f8;
   border: solid #bdbdbd 1px;
   /* border: solid limegreen 3px; */
   box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+.card-body {
+  max-width: 1000px;
+  padding: 0;
+  border: 3px solid rgb(244, 162, 97);
+}
+
+.card-body-container {
+  padding: 10px;
+  padding-top: 0;
+}
+
+.time-of-day-title {
+  background-color: rgb(244, 162, 97);
+  /* border: 2px coral solid; */
+  border-radius: 15px 15px 0 0;
+  padding: 20px;
+  margin-top: -8px;
 }
 
 /* .modal-header {
@@ -217,6 +250,14 @@
 #profile-card {
   width: 600px;
   border: 20px;
+  margin: 0 auto;
+  padding: 0;
+  border-radius: 20px;
+}
+
+#profile-card .card-body {
+  margin: 0;
+  padding: 10px;
 }
 
 /* chart template specific styles */

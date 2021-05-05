@@ -120,7 +120,8 @@ def past_entries():
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
         entries = crud.get_entries(user_id)
-        
+        print(entries)
+        print('\n\n\n\n\n\n')
         return render_template('past_entries.html', entries=entries, quote=quote, today=today)
 
     else:
@@ -139,7 +140,7 @@ def add_new_am_entry():
     journal_entry = request.form.get('journal-entry')
     entries = request.form.getlist('gratitude')
     reasons = request.form.getlist('gratitude-reason')
-   
+    
     if crud.get_am_entry_by_date(date):
         flash('Morning entry for this day alreay exists')
         return redirect('/new_am_entry')
