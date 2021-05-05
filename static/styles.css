@@ -21,15 +21,32 @@
   justify-content: center;
 }
 
+#homepage-description {
+  max-width: 500px;
+  margin: 20px;
+}
+
+.home-height h1,
+.home-height h3 {
+  text-align: center;
+  color: white;
+}
+
+.home-height h3 {
+  color: #e9c46a;
+}
+
 .home-height p {
   text-align: center;
 }
+
 /* source https://css-tricks.com/snippets/css/typewriter-effect/ */
 .typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: 0.15em solid orange; /* The typwriter cursor */
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  margin-bottom: 30px;
   letter-spacing: 0.15em; /* Adjust as needed */
   animation: typing 3.5s steps(40, end), blink-caret 0.95s step-end infinite;
 }
@@ -54,7 +71,8 @@
     border-color: orange;
   }
 }
-/*  */
+/* sign form */
+
 #signin-button-flash-container {
   display: flex;
   flex-direction: column;
@@ -62,19 +80,37 @@
 }
 
 #alert {
-  background-color: cadetblue;
+  background-color: #e76f51;
   display: inline-block;
   margin: 0 auto;
-  padding: 0;
+  padding: 0 3px;
+  margin-bottom: 3px;
 }
 #login-form {
+  padding: 10px;
+  border: 3px solid #e9c46a;
+  border-radius: 10px;
   width: 300px;
   margin: 0 auto;
+  padding-top: 10px;
+  width: [object Object]px;
+  height: [object Object]px;
+  background: rgb(248, 248, 248, 0.9);
+  box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+  -webkit-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
 }
-/* .navbar-brand {
-  color: red;
-  display: flex;
-  justify-content: space-between;
+
+#login-form input {
+  opacity: 0.6;
+}
+
+#login-form p {
+  margin: 10px;
+}
+
+/* #login-form input:placeholder {
+  color: white;
 } */
 
 #quote-container-past-entries {
@@ -138,7 +174,6 @@ body {
   height: [object Object]px;
   background: #f8f8f8;
   border: solid #bdbdbd 1px;
-  /* border: solid limegreen 3px; */
   box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
   -webkit-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
   -moz-box-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
@@ -179,10 +214,12 @@ body {
   border-radius: 40%;
 }
 
+#login-button:hover,
 .close:hover,
 .submit-button:hover,
 .entry-submit-button:hover {
-  background-color: rgb(183, 183, 164);
+  background-color: #2a9d8f;
+  color: white;
 }
 
 #login-button,
@@ -225,7 +262,7 @@ body {
 .modal-body input[type="radio"] {
   box-shadow: none;
   height: auto;
-  color: greenyellow;
+  /* color: greenyellow; */
 }
 
 #login-form input:focus,
@@ -233,7 +270,7 @@ body {
 .modal-body textarea:focus,
 .modal-body select:focus {
   outline: none;
-  border: 2px greenyellow solid;
+  border: 2px #2a9d8f solid;
 }
 
 .form-note {
@@ -274,14 +311,3 @@ body {
   margin: 100px;
   max-width: 1000px;
 }
-
-/* .card-title {
-  padding: 0;
-  border: 1px greenyellow;
-} */
-
-/* .card{
-  padding: 20px;
-  margin: 0px;
-  
-} */

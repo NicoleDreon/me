@@ -120,8 +120,7 @@ def past_entries():
         user = crud.get_user(session.get('user_id'))
         user_id = user.user_id
         entries = crud.get_entries(user_id)
-        print(entries)
-        print('\n\n\n\n\n\n')
+      
         return render_template('past_entries.html', entries=entries, quote=quote, today=today)
 
     else:
