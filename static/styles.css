@@ -1,3 +1,8 @@
+body {
+  /* background: #fafbfc; */
+  background: no-repeat center/cover url("peaceful_background.jpg");
+}
+
 #login-form,
 #sign-up-form,
 #new-am-entry,
@@ -78,7 +83,6 @@
   }
 }
 /* sign form */
-
 #signin-button-flash-container {
   display: flex;
   flex-direction: column;
@@ -92,6 +96,8 @@
   padding: 0 3px;
   margin-bottom: 3px;
 }
+
+/* login from styles */
 #login-form {
   padding: 10px;
   border: 3px solid #e9c46a;
@@ -115,19 +121,18 @@
   margin: 10px;
 }
 
+/* past entries quote styles */
 #quote-container-past-entries {
-  background: no-repeat center/cover url("peaceful_background.jpg");
-  height: 300px;
   z-index: -1;
   padding: 40px 100px 0 100px;
+  color: white;
+  /* border: white 1px solid; */
+  border-radius: 15px;
+  margin: 0 auto;
+  max-width: 800px;
 }
-
-body {
-  /* background: #fafbfc; */
-  background: no-repeat center/cover url("peaceful_background.jpg");
-}
-
 #quote-container-past-entries p {
+  opacity: 0.6;
   margin-left: 20px;
 }
 
@@ -137,6 +142,11 @@ body {
   font-size: 30px;
 }
 
+#quote-container-past-entries footer {
+  font-size: 20px;
+}
+
+/* past entries card styles */
 .past-entries-card-container {
   display: flex;
   justify-content: center;
@@ -178,7 +188,8 @@ body {
 .card-body {
   max-width: 1000px;
   padding: 0;
-  border: 3px solid rgb(244, 162, 97);
+  border: 3px solid rgb(38, 70, 83);
+  color: rgb(38, 70, 83);
 }
 
 .card-body-container {
@@ -187,22 +198,16 @@ body {
 }
 
 .time-of-day-title {
-  background-color: rgb(244, 162, 97);
-  /* border: 2px coral solid; */
+  background-color: rgb(38, 70, 83);
+  color: rgba(255, 255, 255, 0.521);
   border-radius: 15px 15px 0 0;
   padding: 20px;
   margin-top: -8px;
 }
 
-/* .modal-header {
-  background: rgb(183, 183, 164);
-  border-radius: 15px 15px 0 0;
-} */
-
 .button-and-note-container {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
   align-items: center;
 }
 
@@ -241,10 +246,6 @@ body {
   border: 1px solid lightgray;
   box-shadow: 0 2px 5px 1px rgb(64 60 67 / 16%);
 }
-
-/* .modal-body label {
-  margin-left: 10px;
-} */
 
 .modal-body textarea {
   height: 120px;
@@ -306,10 +307,20 @@ body {
 .chart {
   margin: 100px;
   max-width: 1000px;
+  background-color: whitesmoke;
+  padding: 20px;
+  border-radius: 10px;
 }
 
-footer {
-  color: #264653;
-  text-align: right;
-  margin-right: 20px;
+#page-footer {
+  background-color: rgb(38, 70, 83);
+  color: rgba(255, 255, 255, 0.37);
+  position: fixed;
+  bottom: 0px;
+  right: 20px;
+  display: block;
+}
+
+li {
+  margin-left: 30px;
 }
