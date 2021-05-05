@@ -151,6 +151,11 @@ body {
   display: flex;
   justify-content: center;
 }
+
+.past-entries-card-contain li {
+  margin-left: 30px;
+}
+
 .past-entry-text {
   overflow: scroll;
   height: 125px;
@@ -284,7 +289,7 @@ body {
 #profile-card {
   width: 600px;
   border: 20px;
-  margin: 0 auto;
+  margin: 50px auto;
   padding: 0;
   border-radius: 20px;
 }
@@ -294,18 +299,28 @@ body {
   padding: 10px;
 }
 
+#profile-name {
+  border-bottom: 1px solid #264653;
+}
+
+#edit-profile {
+  color: rgb(177, 177, 177);
+  float: right;
+  margin-right: 50px;
+  text-decoration: none;
+}
+
 /* chart template specific styles */
 
 #chart-heading-content {
-  margin: 50px;
+  margin: 40px auto;
   max-width: 800px;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center; */
-  /* text-align: left; */
+  /* color: white; */
+  font-size: 20px;
 }
+
 .chart {
-  margin: 100px;
+  margin: 0 auto 100px auto;
   max-width: 1000px;
   background-color: whitesmoke;
   padding: 20px;
@@ -319,8 +334,4 @@ body {
   bottom: 0px;
   right: 20px;
   display: block;
-}
-
-li {
-  margin-left: 30px;
 }

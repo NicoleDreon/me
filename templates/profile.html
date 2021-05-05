@@ -1,9 +1,9 @@
 {% extends 'base.html' %}{% block body %}
-<p id="welcome-message">Welcome, {{fname}}!</p>
+<!-- <p id="welcome-message">Welcome, {{fname}}!</p> -->
 <div class="card" id="profile-card">
   <div class="card-body">
     <div class="row">
-      <p>{{fname}} {{lname}}</p>
+      <h3 id="profile-name">{{fname}} {{lname}}</h3>
     </div>
     <div class="row">
       <div class="col">
@@ -22,6 +22,7 @@
       </div>
     </div>
     <p>Password: {% for letter in password %} * {% endfor %}</p>
+    <a href="#" id="edit-profile">edit</a>
   </div>
 </div>
 {% endblock%}
