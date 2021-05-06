@@ -1,7 +1,7 @@
 {% extends 'base.html' %}{% block head %} {% endblock %} {% block body %}
 <div div id="quote-container-past-entries">
   <div id="quote-container-past-entries-content">
-    <p>Daily inspiration</p>
+    <h5>Daily inspiration</h5>
     <blockquote class="quote quote-past-entries">
     &ldquo;{{quote['q']}}&rdquo;
     <footer class="quote-footer">&mdash;{{quote['a']}}</footer>
@@ -22,8 +22,9 @@
       <div class="card-body-container">
         <p class="card-text"><h4>Morning</h4>
         {% if morning_entry != None %}
+        Gratitude:
         <ul>
-          Gratitude: {% for gratitude in morning_entry.gratitudes %}
+           {% for gratitude in morning_entry.gratitudes %}
           <li><b>{{gratitude.entry}}:</b> {{gratitude.reason}}</li>
           {% endfor %}
         </ul>
@@ -56,11 +57,11 @@
           <p>Overall Rating for Day: <b>{{evening_entry.qual_day}}</b></p>
         </div>
       </div>
-        <ul>
+        <!-- <ul>
           Top Emotions: {% for emotion_entry in evening_entry.emotion_entries %}
           <li><b>{{emotion_entry.emotion.emotion}}</b></li>
           {% endfor %}
-        </ul>
+        </ul> -->
         <p>Journal Entry: <p class="past-entry-text">{{evening_entry.journal_entry}}</p></p>
         {% else %}
         <p class="note">no entry</p>
