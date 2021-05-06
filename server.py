@@ -169,14 +169,14 @@ def add_new_pm_entry():
     goal_completed = bool(helper_functions.cast_int((request.form.get('goal-completed'))))
     journal_entry = request.form.get('journal-entry')
 
-    if crud.get_pm_entry_by_date(date):
-        flash('Evening entry for this day alreay exists')
-        return redirect('/past_entries')
+    # if crud.get_pm_entry_by_date(date):
+    #     flash('Evening entry for this day alreay exists')
+    #     return redirect('/past_entries')
 
-    else:
-        new_pm_entry = crud.add_pm_entry(session['user_id'], date, activity_level, qual_day, goal_completed, journal_entry)
+    # else:
+    new_pm_entry = crud.add_pm_entry(session['user_id'], date, activity_level, qual_day, goal_completed, journal_entry)
 
-        return redirect('/past_entries')
+    return redirect('/past_entries')
 
 
 @app.route('/new_am_entry')

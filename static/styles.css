@@ -91,7 +91,7 @@ body {
   align-items: center;
 }
 
-#alert {
+.alert {
   background-color: #e76f51;
   color: white;
   display: inline-block;

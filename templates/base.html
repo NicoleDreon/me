@@ -280,28 +280,55 @@
                     <span aria-hidden="true">&times;</span>
                   </button>
                 </div>
-                <div>
+                {#<!-- <div>
                   {% with messages = get_flashed_messages() %} {% if messages %}
                   {% for message in messages %}
                   <p class="alert" id="alert" role="alert">{{ message }}</p>
                   {% endfor %} {% endif %} {% endwith %}
-                </div>
+                </div> -->#}
                 <div class="modal-body">
                   <form
                     action="/handle_new_pm_entry"
                     id="new-pm-entry"
                     method="POST"
                   >
+                    <div>
+                      <p
+                        class="alert"
+                        id="pm-alert"
+                        role="alert"
+                        style="display: none"
+                      >
+                        Evening entry for this date already exists.
+                      </p>
+                    </div>
                     <label for="date">Date</label>
                     {# set so it defaults to todays date #}
                     <input
                       type="date"
-                      id="date"
+                      id="pm-date"
                       name="date"
                       value="{{today}}"
                       max="{{today}}"
                       required
                     />
+                    <script>
+                      const eveningAlertMessage = document.querySelector(
+                        "#pm-alert"
+                      );
+                      const date = document.querySelector("#pm-date");
+                      date.addEventListener("change", (e) => {
+                        fetch(`/check_am_date?date=${date.value}`, {
+                          method: "get",
+                        })
+                          .then((results) => results.json())
+                          .then((res) => {
+                            eveningAlertMessage.style.display = res.hasDate
+                              ? "block"
+                              : "None";
+                          });
+                      });
+                    </script>
                     <div>
                       <label for="activity-level"
                         >I was
