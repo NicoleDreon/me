@@ -1,5 +1,4 @@
 body {
-  /* background: #fafbfc; */
   background: no-repeat center/cover url("peaceful_background.jpg");
 }
 
@@ -13,16 +12,19 @@ body {
 
 .navbar {
   background-color: #264653;
+  width: 103%;
+  padding-right: 3%;
 }
 
 .navbar-brand {
-  margin-left: 10px;
+  margin-left: 20px;
   /* color: rgba(255, 255, 255, 0.55); */
   opacity: 0.55;
 }
 
 .navbar-nav {
   margin-left: auto;
+  margin-right: 20px;
 }
 
 .home-height {
@@ -91,7 +93,9 @@ body {
 
 #alert {
   background-color: #e76f51;
+  color: white;
   display: inline-block;
+  text-align: center;
   margin: 0 auto;
   padding: 0 3px;
   margin-bottom: 3px;
@@ -119,6 +123,14 @@ body {
 
 #login-form p {
   margin: 10px;
+}
+
+#login-form a {
+  color: rgb(146, 145, 145);
+}
+
+#login-form a:hover {
+  color: rgb(177, 177, 177);
 }
 
 /* past entries quote styles */
@@ -328,8 +340,16 @@ body {
 #page-footer {
   background-color: rgb(38, 70, 83);
   color: rgba(255, 255, 255, 0.37);
-  position: fixed;
   bottom: 0px;
-  right: 20px;
-  display: block;
+  position: fixed;
+  /* right: 20px; */
+  /* display: block; */
+  width: 100%;
+  text-align: right;
+}
+
+#page-footer p {
+  font-size: 14px;
+  margin: 5px;
+  margin-right: 15px;
 }
