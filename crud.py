@@ -101,8 +101,8 @@ def get_am_entry_by_date_range():
   """Return morning entries in a given date range."""
 
   q = db.session.query(Morning_Entry)
-  q = q.filter(Morning_Entry.date >= datetime.date(2021, 4, 6))
-  q = q.filter(Morning_Entry.date <= datetime.date(2021, 4, 13))
+  q = q.filter(Morning_Entry.date >= datetime.date(2021, 4, 28))
+  q = q.filter(Morning_Entry.date <= datetime.date(2021, 5, 4))
   q = q.filter(Morning_Entry.user_id==1)
   am_entries = q.all()
 
@@ -112,8 +112,8 @@ def get_pm_entry_by_date_range():
   """Return evening entries in a given date range."""
 
   q = db.session.query(Evening_Entry)
-  q = q.filter(Evening_Entry.date >= datetime.date(2021, 4, 6))
-  q = q.filter(Evening_Entry.date <= datetime.date(2021, 4, 13))
+  q = q.filter(Evening_Entry.date >= datetime.date(2021, 4, 28))
+  q = q.filter(Evening_Entry.date <= datetime.date(2021, 5, 4))
   q = q.filter(Evening_Entry.user_id==1)
   pm_entries = q.all()
 
