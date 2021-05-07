@@ -128,9 +128,3 @@ python3.6 server.py
 ```
 
 - Navigate to 'localhost:5000/' to access Mindful Everyday and start journaling!
-
-<!-- ## License
-
-[MIT](https://choosealicense.com/licenses/mit/) -->
-
-Copyright (c) [2020] [Nicole Dreon]
