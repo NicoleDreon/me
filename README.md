@@ -24,7 +24,7 @@ Insert gif or link to demo
 
 Already existing users can log in.
 
-/Users/programming/src/final-project/me/static/landing.png
+![App Screenshot](/template/landing.png)
 
 Or a new user can register.
 
