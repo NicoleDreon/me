@@ -24,7 +24,7 @@ Insert gif or link to demo
 
 Already existing users can log in.
 
-![App Screenshot](/template/landing.png)
+![App Screenshot](https://github.com/NicoleDreon/me/blob/main/static/landing.png)
 
 Or a new user can register.
 
