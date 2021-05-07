@@ -8,6 +8,7 @@ In the modern world we’re constantly inundated by external stimuli, carefully 
 - [Features](#features)
 - [Documentation](#documentation)
 - [Installation](#installation)
+- [Future State](#future)
 
 ## <a name="tech-stack"></a>Tech Stack
 
@@ -77,6 +78,16 @@ All the users quantifiable data is gatehered and dispalyed using Chart.js. Users
 A snapshot of the users data.
 
 ![profile card](https://github.com/NicoleDreon/me/blob/main/static/profile.png)
+
+## <a name="future"></a>Future State
+
+Future goals for Mindful Everyday
+
+- Analytics
+  - Option to choose 7 day range
+  - Chart for month and year
+- Calender/search bar to filter past entries
+- Badges or counter to track number of days in a row that user journaled
 
 ## <a name="installation"></a>Installation
 
