@@ -49,7 +49,7 @@ def login():
         return redirect('/past_entries')
   
     else:
-        flash('Invalid login information, try again.')
+        flash('Invalid login information.')
         return redirect('/')
 
 @app.route('/sign_up', methods=['POST', 'GET'])

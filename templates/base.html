@@ -115,7 +115,7 @@
                     <div>
                       <p
                         class="alert"
-                        id="alert"
+                        id="morning-alert"
                         role="alert"
                         style="display: none"
                       >
@@ -132,7 +132,9 @@
                       required
                     />
                     <script>
-                      const alertMessage = document.querySelector("#alert");
+                      const alertMessage = document.querySelector(
+                        "#morning-alert"
+                      );
                       const dateInput = document.querySelector("#date");
                       dateInput.addEventListener("change", (e) => {
                         fetch(`/check_am_date?date=${dateInput.value}`, {
