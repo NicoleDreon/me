@@ -2,7 +2,13 @@
 
 In the modern world we’re constantly inundated by external stimuli, carefully curated to hold our attention and direct our actions. With these distractions it becomes more challenging to go inward. Journaling has always been a great tool. However unless you go back through all your old entries it's hard to see any correlation. Mindful Everyday was created to bridge that gap. It’s a space for users to slow down, take time for themselves each day, and visually see trends in their daily practices.
 
-## Tech Stack
+## Contents
+
+- [Tech Stack](#tech-stack)
+- [Features](#features)
+- [Documentation](#documentation)
+
+## <a name="tech-stack"></a>Tech Stack
 
 - Python
 - JavaScript
@@ -19,7 +25,7 @@ In the modern world we’re constantly inundated by external stimuli, carefully 
 
 Insert gif or link to demo
 
-## Features
+## <a name="features"></a>Features
 
 ### Landing Page
 
@@ -27,7 +33,7 @@ Already existing users can log in.
 
 ![landing page](https://github.com/NicoleDreon/me/blob/main/static/landing.png)
 
-Or a new user can register.
+Or a new user can register. Once a new user is added they will be redirected to their [profile](#profile) page.
 
 ![create account](https://github.com/NicoleDreon/me/blob/main/static/signup.png)
 
@@ -61,13 +67,13 @@ All the users quantifiable data is gatehered and dispalyed using Chart.js. Users
 
 ![chart](https://github.com/NicoleDreon/me/blob/main/static/chart.png)
 
-### Profile
+### <a name="profile"></a>Profile
 
 A snapshot of the users data.
 
 ![profile card](https://github.com/NicoleDreon/me/blob/main/static/profile.png)
 
-## Documentation
+## <a name="documentation"></a>Documentation
 
 [Documentation](https://linktodocumentation)
 
