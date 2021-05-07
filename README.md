@@ -80,7 +80,7 @@ A snapshot of the users data.
 
 ## <a name="installation"></a>Installation
 
-If you'd like to run Mindful Everyday on your own machiene.
+Run Mindful Everyday on your own machiene.
 
 Install PostgreSQL (Mac OSX)
 
@@ -97,13 +97,13 @@ virtualenv env
 source env/bin/activate
 ```
 
-Install the dependencies:
+Install dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-Set up the database:
+Set up database:
 
 ```
 createdb entries
