@@ -97,12 +97,8 @@ def get_new_user_info():
     email = request.form.get('email')
     phone = request.form.get('phone')
     password = request.form.get('password')
-    # ????????????????????????
     dob = datetime.today()
     gender = request.form.get('gender')
-    # check_login with email that was given
-    # if it returns user redirect to login - flash message user exists
-    # if returns none(else) implement the rest of function
     new_user = crud.add_user(fname, lname, email, phone, dob, gender, password)
 
     session['user_id'] = new_user.user_id
