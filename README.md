@@ -80,43 +80,43 @@ A snapshot of the users data.
 
 ## <a name="installation"></a>Installation
 
-Run Mindful Everyday on your own machiene.
+Run Mindful Everyday on your own machine.
 
-Install PostgreSQL (Mac OSX)
+- Install PostgreSQL (Mac OSX)
 
-Clone or fork this repo:
+- Clone or fork this repo:
 
 ```
 https://github.com/NicoleDreon/me.git
 ```
 
-Create and activate a virtual environment inside your Mindful Everyday directory:
+- Create and activate a virtual environment inside your Mindful Everyday directory:
 
 ```
 virtualenv env
 source env/bin/activate
 ```
 
-Install dependencies:
+- Install dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-Set up database:
+- Set up database:
 
 ```
 createdb entries
 python3 model.py
 ```
 
-Run the app:
+- Run the app:
 
 ```
 python3.6 server.py
 ```
 
-Navigate to 'localhost:5000/' to access Mindful Everyday and start journaling!
+- Navigate to 'localhost:5000/' to access Mindful Everyday and start journaling!
 
 ## License
 
