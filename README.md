@@ -7,6 +7,7 @@ In the modern world we’re constantly inundated by external stimuli, carefully 
 - [Tech Stack](#tech-stack)
 - [Features](#features)
 - [Documentation](#documentation)
+- [Installation](#installation)
 
 ## <a name="tech-stack"></a>Tech Stack
 
@@ -77,9 +78,45 @@ A snapshot of the users data.
 
 ![profile card](https://github.com/NicoleDreon/me/blob/main/static/profile.png)
 
-## <a name="documentation"></a>Documentation
+## <a name="installation"></a>Installation
 
-[Documentation](https://linktodocumentation)
+If you'd like to run Mindful Everyday on your own machiene.
+
+Install PostgreSQL (Mac OSX)
+
+Clone or fork this repo:
+
+```
+https://github.com/NicoleDreon/me.git
+```
+
+Create and activate a virtual environment inside your Mindful Everyday directory:
+
+```
+virtualenv env
+source env/bin/activate
+```
+
+Install the dependencies:
+
+```
+pip install -r requirements.txt
+```
+
+Set up the database:
+
+```
+createdb entries
+python3 model.py
+```
+
+Run the app:
+
+```
+python3.6 server.py
+```
+
+Navigate to 'localhost:5000/' to access Mindful Everyday and start journaling!
 
 ## License
 
