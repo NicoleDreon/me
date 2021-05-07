@@ -1,6 +1,6 @@
 # Mindful Everyday
 
-A brief description of what this project does and who it's for
+In the modern world we’re constantly inundated by external stimuli, carefully curated to hold our attention and direct our actions. With these distractions it becomes more challenging to go inward. Journaling has always been a great tool. However unless you go back through all your old entries it's hard to see any correlation. Mindful Everyday was created to bridge that gap. It’s a space for users to slow down, take time for themselves each day, and visually see trends in their daily practices.
 
 ## Tech Stack
 
@@ -8,6 +8,7 @@ A brief description of what this project does and who it's for
 - JavaScript
 - HTML
 - CSS
+- Bootstrap
 - Flask
 - Jinja
 - PostgreSQL
@@ -36,11 +37,13 @@ Once logged in the user will be directd to their hompage which displays all thei
 
 ![past entry with quote](https://github.com/NicoleDreon/me/blob/main/static/past_entry.png)
 
+Each day is displayed in a past entry card with links together the morning and evening entries into one card using a jinja for loop.
+
 ![past entry card](https://github.com/NicoleDreon/me/blob/main/static/entry_card.png)
 
 ### New Entry
 
-A user can make a new morning or evening entry from any page by selecting the option in the navbar. One submitted the user will be redirected to their past entries with the new entry in chronological order.
+A user can make a new morning or evening entry from any page by selecting the option in the navbar. Once submitted the user will be redirected to their past entries where the new entry will be added in chronological order.
 
 ![new entry](https://github.com/NicoleDreon/me/blob/main/static/new_entry.png)
 
@@ -54,7 +57,7 @@ Add a new evening entry
 
 ### Analytics
 
-All the users quantifiable data is gatehered and dispalyed using Chart.js. Users can turn on and off lines on the graph to explore possible correlations.
+All the users quantifiable data is gatehered and dispalyed using Chart.js. Users can turn on and off lines on the graph (by clicking the key) to explore possible correlations.
 
 ![chart](https://github.com/NicoleDreon/me/blob/main/static/chart.png)
 
