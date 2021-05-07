@@ -39,7 +39,7 @@ Or a new user can register. Once a new user is added they will be redirected to 
 
 ### Past Entries/User Homepage
 
-Once logged in the user will be directd to their hompage which displays all their past journal entries. The daily inspiration quote is being pulled in from the Zen Quotes API.
+Once logged in the user is directd to their hompage which displays all their past journal entries and a daily inspirational quote which is being pulled in from the Zen Quotes API.
 
 ![past entry with quote](https://github.com/NicoleDreon/me/blob/main/static/past_entry.png)
 
@@ -60,6 +60,10 @@ Add a new morning entry
 Add a new evening entry
 
 ![new evening entry](https://github.com/NicoleDreon/me/blob/main/static/pm_entry.png)
+
+If the user tries to make either a morning entry or evening entry on a day that they already have and entry for that time of day a JavaScript alert will appear to notify the user an entry already exists.
+
+![new evening entry](https://github.com/NicoleDreon/me/blob/main/static/alert.png)
 
 ### Analytics
 
