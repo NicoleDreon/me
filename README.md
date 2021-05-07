@@ -7,8 +7,8 @@ In the modern world we’re constantly inundated by external stimuli, carefully 
 - [Tech Stack](#tech-stack)
 - [Features](#features)
 - [Documentation](#documentation)
-- [Installation](#installation)
 - [Future State](#future)
+- [Installation](#installation)
 
 ## <a name="tech-stack"></a>Tech Stack
 
@@ -87,7 +87,7 @@ Future goals for Mindful Everyday
   - Option to choose 7 day range
   - Chart for month and year
 - Calender/search bar to filter past entries
-- Badges or counter to track number of days in a row that user journaled
+- Badges or counter to track number of days in a row entries were made
 
 ## <a name="installation"></a>Installation
 
@@ -132,3 +132,5 @@ python3.6 server.py
 <!-- ## License
 
 [MIT](https://choosealicense.com/licenses/mit/) -->
+
+Copyright (c) [2020] [Nicole Dreon]
