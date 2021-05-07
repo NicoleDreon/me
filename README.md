@@ -22,9 +22,9 @@ In the modern world we’re constantly inundated by external stimuli, carefully 
 - SQLAlchemy
 - Chart.js
 
-## Demo
+<!-- ## Demo
 
-Insert gif or link to demo
+Insert gif or link to demo -->
 
 ## <a name="features"></a>Features
 
@@ -118,6 +118,6 @@ python3.6 server.py
 
 - Navigate to 'localhost:5000/' to access Mindful Everyday and start journaling!
 
-## License
+<!-- ## License
 
-[MIT](https://choosealicense.com/licenses/mit/)
+[MIT](https://choosealicense.com/licenses/mit/) -->
