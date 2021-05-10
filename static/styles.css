@@ -296,7 +296,8 @@ body {
   margin-top: 20px;
 }
 
-#profile-card {
+#profile-card,
+#contact-card {
   width: 600px;
   border: 20px;
   margin: 50px auto;
@@ -304,12 +305,18 @@ body {
   border-radius: 20px;
 }
 
-#profile-card .card-body {
+#profile-card .card-body,
+#contact-card .card-body {
   margin: 0;
   padding: 30px;
 }
 
-#profile-name {
+#contact-card img {
+  width: 200px;
+}
+
+#profile-name,
+#contact-name {
   border-bottom: 1px solid #264653;
 }
 
@@ -320,13 +327,22 @@ body {
   text-decoration: none;
 }
 
+#contact-card a {
+  color: darkgrey;
+}
+
 /* chart template specific styles */
 
-#chart-heading-content {
+#chart-heading-content,
+#contact-heading {
   margin: 40px auto;
   max-width: 995px;
   color: white;
   font-size: 20px;
+}
+
+#contact-heading {
+  font-size: 30px;
 }
 
 .chart {
