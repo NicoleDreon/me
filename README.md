@@ -9,6 +9,7 @@ In the modern world we’re constantly inundated by external stimuli, carefully 
 - [Documentation](#documentation)
 - [Future State](#future)
 - [Installation](#installation)
+- [Contributing](#contributing)
 
 ## <a name="tech-stack"></a>Tech Stack
 
@@ -128,3 +129,7 @@ python3.6 server.py
 ```
 
 - Navigate to 'localhost:5000/' to access Mindful Everyday and start journaling!
+
+## <a name="contributing"></a>Contributing
+
+Bug reports and pull requests are welcome on Github at https://github.com/NicoleDreon/me. If contributing please adhere to the Contributor Covenant code of conduct.
