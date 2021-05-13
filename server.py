@@ -12,7 +12,6 @@ import helper_functions
 app = Flask(__name__)
 app.secret_key = 'key'
 
-
 @app.route('/')
 def homepage():
     """View homepage."""
@@ -23,6 +22,7 @@ def homepage():
         return redirect('/past_entries')
     else:
         return render_template('homepage.html', quote=quote)
+
 
 @app.route('/about')
 def about():
@@ -35,6 +35,7 @@ def contact():
     """View contact page."""
 
     return render_template('contact.html')
+
 
 @app.route('/login', methods=['POST', 'GET'])
 def login():
@@ -51,6 +52,7 @@ def login():
     else:
         flash('Invalid login information.')
         return redirect('/')
+
 
 @app.route('/sign_up', methods=['POST', 'GET'])
 def sign_up():
@@ -88,6 +90,7 @@ def profile():
     else:    
         return render_template('homepage.html')
 
+
 @app.route('/profile', methods=['POST'])
 def get_new_user_info():
     """Get new user info."""
@@ -105,6 +108,7 @@ def get_new_user_info():
 
     return render_template('profile.html', fname=fname, lname=lname, email=email, phone=phone, password=password, dob=dob, gender=gender)
     
+
 @app.route('/past_entries', methods=['GET', 'POST'])
 def past_entries():
     """Display past journal entries for user."""
@@ -145,6 +149,7 @@ def add_new_am_entry():
 
     return redirect('/past_entries')
 
+
 @app.route('/check_am_date')
 def check_am_date():
     """Check date of am entries."""
@@ -174,58 +179,9 @@ def add_new_pm_entry():
     return redirect('/past_entries')
 
 
-@app.route('/new_am_entry')
-def new_am_entry():
-    """Create a new morning entry."""
-    
-    if 'user_id' in session:
-        today = datetime.today().strftime('%Y-%m-%d')
-        user = crud.get_user(session.get('user_id'))
-        user_id = user.user_id
-    
-        return render_template('new_am_entry.html', today=today)
-   
-    else:
-        return redirect('/')   
-
-@app.route('/new_pm_entry')
-def new_pm_route():
-    """Create a new evening entry."""
-
-    if 'user_id' in session:
-        today = datetime.today().strftime('%Y-%m-%d')
-        user = crud.get_user(session.get('user_id'))
-        user_id = user.user_id
-
-        return render_template('new_pm_entry.html', today=today)
-
-    else:
-        return redirect('/')
-
-@app.route('/add_missing_am_entry')
-def add_missing_am_entry():
-    """Add a missing am entry."""
-
-    date = request.args.get('date')
-    date_time = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-    date_formated = date_time.strftime('%Y-%m-%d')
-    print(date_formated)
-
-    return render_template('add_missing_am_entry.html', date=date_formated)
-
-@app.route('/add_missing_pm_entry')
-def add_missing_pm_entry():
-    """Add a missing pm entry."""
-
-    date = request.args.get('date')
-    date_time = datetime.strptime(date, '%Y-%m-%d %H:%M:%S')
-    date_formated = date_time.strftime('%Y-%m-%d') 
-
-    return render_template('add_missing_pm_entry.html', date=date_formated)
-
 @app.route('/chart.json')
 def chart():
-    """Send data to front end."""
+    """Send data in json string to front end."""
 
     am_entries = crud.get_am_entry_by_date_range()
     pm_entries = crud.get_pm_entry_by_date_range()
@@ -259,7 +215,6 @@ def logout():
 
     session.pop('user_id', None)
     return redirect('/')
-
 
 
 if __name__ == '__main__':
