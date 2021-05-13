@@ -17,7 +17,7 @@ def homepage():
     """View homepage."""
 
     quote = zen_quotes.get_quote()
-    print(quote)
+    # print(quote)
     if 'user_id' in session:
         return redirect('/past_entries')
     else:
@@ -29,6 +29,7 @@ def about():
     """View about page."""
 
     return render_template('about.html')
+    
 
 @app.route('/contact')
 def contact():

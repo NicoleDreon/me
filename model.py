@@ -51,6 +51,7 @@ class Morning_Entry(db.Model):
         return f'<Morning_Entry user_id={self.user_id} date={self.date} hrs_sleep={self.hrs_sleep} qual_sleep={self.qual_sleep} snooze={self.snooze} goal={self.goal} journal_entry={self.journal_entry}>'
 
     user = db.relationship('User', backref='morning_entries')
+    
 
 class Gratitude(db.Model):
     """A gratitude entry."""
@@ -67,6 +68,7 @@ class Gratitude(db.Model):
         return f'<Gratitude entry={self.entry} reason={self.reason}>'
 
     morning_entries = db.relationship('Morning_Entry', backref='gratitudes')
+
 
 class Evening_Entry(db.Model):
     """An evening entry."""
@@ -86,6 +88,7 @@ class Evening_Entry(db.Model):
         return f'<Evening_Entry pm_entry_id={self.pm_entry_id} date={self.date} activity_level={self.activity_level} activity={self.activity} goal_completed={self.goal_completed} journal_entry={self.journal_entry}>'
 
     user = db.relationship('User', backref='evening_entries')
+
 
 class Emotion_Entry(db.Model):
     """An emotion entry."""
@@ -116,6 +119,7 @@ class Emotion(db.Model):
         return f'<Emotion emotion={self.emotion} user_id={self.user_id}>'
 
     user = db.relationship('User', backref='emotions')
+
 
 def connect_to_db(flask_app, db_uri='postgresql:///entries', echo=True):
     flask_app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
