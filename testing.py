@@ -21,7 +21,7 @@ class MeIntegrationTestCase(unittest.TestCase):
 
     # client = server.app.test_client()
     result = self.client.get('/')
-    self.assertIn(b'<p>Not a member, <a href="/sign_up">sign up</a>.</p>', result.data)
+    self.assertIn(b'Not a member', result.data)
 
   def test_login(self):
     """Test login if user in db."""
@@ -29,26 +29,7 @@ class MeIntegrationTestCase(unittest.TestCase):
     # client = server.app.test_client()
     result = self.client.post('/login', data={"email": "noelle@gmail.com", "password": 'letsdothis'}, follow_redirects=True)
 
-    self.assertIn(b'<li><a href="/logout">Logout</a></li>', result.data)
-
-
-class CheckLoginTestCase(unittest.TestCase):
-  """Unit test to test check_login fuction."""
-  
-  def setUp(self):
-      """Stuff to do before every test."""
-
-      # Get the Flask test client
-      self.client = server.app.test_client()
-
-      # Show Flask errors that happen during tests
-      server.app.config['TESTING'] = True
-      connect_to_db(server.app, 'postgresql:///test')
-
-  def test_check_login(self):
-    """."""
-
-    assert crud.check_login('noelle@gmail.com') == '< User user_id = 1 fname = Noelle lname = Smith email = noelle@gmail.com, phone=None password = letsdothis dob = 1982-09-12 00:00:00 gender = Female >'
+    self.assertIn(b'<h5>Daily inspiration</h5>', result.data)
 
 
 if __name__ == "__main__":
